@@ -1,3 +1,9 @@
+/*
+Individual.java
+Author: Esihle Mlinjana
+Student Number: 222441712
+Date: 11 May 2025
+ */
 package Domain;
 
 import java.time.LocalDate;

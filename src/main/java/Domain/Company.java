@@ -1,3 +1,10 @@
+/*
+Company.java
+Author: Esihle Mlinjana
+Student Number: 222441712
+Date: 11 May 2025
+ */
+
 package Domain;
 
 public class Company {
