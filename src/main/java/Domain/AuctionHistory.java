@@ -1,0 +1,161 @@
+package Domain;
+
+import java.time.LocalDate;
+
+public class AuctionHistory {
+
+    protected short historyId;
+
+    protected String auctionSessionId;
+
+    protected String carVIN;
+
+    protected String userId;
+
+    protected String sellerId;
+
+    protected String  buyerId;
+
+    protected double finalPrice;
+
+    protected LocalDate auctionDate;
+
+    protected String status;
+
+    protected AuctionHistory() {
+    }
+
+    public AuctionHistory(Builder builder) {
+        this.historyId = builder.historyId;
+        this.auctionSessionId = builder.auctionSessionId;
+        this.carVIN = builder.carVIN;
+        this.userId = builder.userId;
+        this.sellerId = builder.sellerId;
+        this.buyerId = builder.buyerId;
+        this.finalPrice = builder.finalPrice;
+        this.auctionDate = builder.auctionDate;
+        this.status = builder.status;
+    }
+
+    public short getHistoryId() {
+        return historyId;
+    }
+
+    public String getAuctionSessionId() {
+        return auctionSessionId;
+    }
+
+    public String getCarVIN() {
+        return carVIN;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public String getBuyerId() {
+        return buyerId;
+    }
+
+    public double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public LocalDate getAuctionDate() {
+        return auctionDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "AuctionHistory{" +
+                "historyId=" + historyId +
+                ", auctionSessionId='" + auctionSessionId + '\'' +
+                ", carVIN='" + carVIN + '\'' +
+                ", userId='" + userId + '\'' +
+                ", sellerId='" + sellerId + '\'' +
+                ", buyerId='" + buyerId + '\'' +
+                ", finalPrice=" + finalPrice +
+                ", auctionDate=" + auctionDate +
+                ", status='" + status + '\'' +
+                '}';
+    }
+    public static class Builder {
+        protected short historyId;
+        protected String auctionSessionId;
+        protected String carVIN;
+        protected String userId;
+        protected String sellerId;
+        protected String buyerId;
+        protected double finalPrice;
+        protected LocalDate auctionDate;
+        protected String status;
+
+        public Builder setHistoryId(short historyId) {
+            this.historyId = historyId;
+            return this;
+        }
+
+        public Builder setAuctionSessionId(String auctionSessionId) {
+            this.auctionSessionId = auctionSessionId;
+            return this;
+        }
+
+        public Builder setCarVIN(String carVIN) {
+            this.carVIN = carVIN;
+            return this;
+        }
+
+        public Builder setUserId(String userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public Builder setSellerId(String sellerId) {
+            this.sellerId = sellerId;
+            return this;
+        }
+
+        public Builder setBuyerId(String buyerId) {
+            this.buyerId = buyerId;
+            return this;
+        }
+
+        public Builder setFinalPrice(double finalPrice) {
+            this.finalPrice = finalPrice;
+            return this;
+        }
+
+        public Builder setAuctionDate(LocalDate auctionDate) {
+            this.auctionDate = auctionDate;
+            return this;
+        }
+
+        public Builder setStatus(String status) {
+            this.status = status;
+            return this;
+        }
+       public Builder(AuctionHistory auctionHistory) {
+            this.historyId = auctionHistory.historyId;
+            this.auctionSessionId = auctionHistory.auctionSessionId;
+            this.carVIN = auctionHistory.carVIN;
+            this.userId = auctionHistory.userId;
+            this.sellerId = auctionHistory.sellerId;
+            this.buyerId = auctionHistory.buyerId;
+            this.finalPrice = auctionHistory.finalPrice;
+            this.auctionDate = auctionHistory.auctionDate;
+            this.status = auctionHistory.status;
+        }
+        public AuctionHistory build() {
+            return new AuctionHistory(this);
+        }
+
+    }
+}
