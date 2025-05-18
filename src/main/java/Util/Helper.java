@@ -28,4 +28,6 @@ public class Helper {
         EmailValidator validator =EmailValidator.getInstance();
         return validator.isValid(email);
     }
+
+
 }
