@@ -1,5 +1,12 @@
 package Domain;
 
+/*Bid
+ * Bid.java
+ * Bid POJO class
+ * Author: Engetelo Mathebane (230227767)
+ * Date: 2025-05-11
+ */
+
 import java.time.LocalDate;
 
 public class Bid {
