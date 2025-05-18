@@ -7,11 +7,16 @@ Date: 23 March 2025
 
 package Domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@Entity
 public class AuctionSession {
 
+    @Id
     private String sessionID;
     private LocalTime startTime;
     private LocalTime endTime;
