@@ -1,5 +1,8 @@
 package Domain;
-
+/*
+Author: Fhumulani Moses Makungo (230787932)
+alias: KodeKnack
+ */
 import java.time.LocalDate;
 
 public class Payment {

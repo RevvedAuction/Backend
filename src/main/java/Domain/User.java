@@ -11,6 +11,7 @@ Date: 11 May 2025
 */
 public class User {
 
+
     private String userID;
     private String userType;
     private String userName;
@@ -118,4 +119,5 @@ public class User {
             return new User(this);
         }
     }
+
 }
