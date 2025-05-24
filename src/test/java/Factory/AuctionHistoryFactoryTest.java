@@ -14,20 +14,22 @@ class AuctionHistoryFactoryTest {
             "AS123",
             "VIN123456",
             "USER123",
+            "SELLER123",
+            "BUYER123",
             10000.0,
             LocalDate.of(2023, 10, 1),
-            "Completed",
-            5);
+            "Completed");
 
     public static AuctionHistory auctionHistory2 = AuctionHistoryFactory.createAuctionHistory(
             (short) 2,
             "AS456",
             "",
             "",
-            15000.0,
-            LocalDate.of(2023, 10, 2),
-            "Pending",
-            3);
+            "",
+            "BUYER123",
+            10000.0,
+            LocalDate.of(2023, 10, 1),
+            "Completed");
 
     @Test
     public void testCreateAuctionHistory() {
