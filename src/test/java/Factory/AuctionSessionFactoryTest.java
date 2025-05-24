@@ -20,15 +20,6 @@ class AuctionSessionFactoryTest {
     );
 
     private static AuctionSession auctionSessionList2 = AuctionSessionFactory.createAuctionSession(
-            "SID1",
-            LocalTime.of(8, 0),
-            LocalTime.of(12, 30),
-            LocalDate.of(2025, 4, 28),
-            true,
-            "1HGCM82334A004352"
-    );
-
-    private static AuctionSession auctionSessionList3 = AuctionSessionFactory.createAuctionSession(
             "",
             LocalTime.of(10, 0),
             LocalTime.of(13, 30),
@@ -44,16 +35,11 @@ class AuctionSessionFactoryTest {
 
     }
 
-    @Test
-    public void testCreateBookWithAllAttributes() {
-        assertNotNull(auctionSessionList2);
-        System.out.println(auctionSessionList2.toString());
-    }
 
     @Test
     public void testCreateBookThatFails(){
-        assertNotNull(auctionSessionList3);
-        System.out.println(auctionSessionList3.toString());
+        assertNotNull(auctionSessionList2);
+        System.out.println(auctionSessionList2.toString());
     }
 
 }

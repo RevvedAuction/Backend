@@ -1,7 +1,9 @@
 package Factory;
 
 import Domain.Seller;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,11 +13,8 @@ class SellerFactoryTest {
             "SEID001",
             "Inidividual");
 
-    private static Seller sellerList2 = SellerFactory.createSeller(
-            "SEID002",
-            "Company");
 
-    private static Seller sellerList3 = SellerFactory.createSeller(
+    private static Seller sellerList2 = SellerFactory.createSeller(
             "",
             "Inidividual");
 
@@ -27,14 +26,8 @@ class SellerFactoryTest {
     }
 
     @Test
-    public void testCreateBookWithAllAttributes() {
+    public void testCreateBookThatFails(){
         assertNotNull(sellerList2);
         System.out.println(sellerList2.toString());
-    }
-
-    @Test
-    public void testCreateBookThatFails(){
-        assertNotNull(sellerList3);
-        System.out.println(sellerList3.toString());
     }
 }

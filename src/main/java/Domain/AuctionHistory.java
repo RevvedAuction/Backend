@@ -147,17 +147,20 @@ public class AuctionHistory {
             this.status = status;
             return this;
         }
-       public Builder(AuctionHistory auctionHistory) {
-            this.historyId = auctionHistory.historyId;
-            this.auctionSessionId = auctionHistory.auctionSessionId;
-            this.carVIN = auctionHistory.carVIN;
-            this.userId = auctionHistory.userId;
-            this.sellerId = auctionHistory.sellerId;
-            this.buyerId = auctionHistory.buyerId;
-            this.finalPrice = auctionHistory.finalPrice;
-            this.auctionDate = auctionHistory.auctionDate;
-            this.status = auctionHistory.status;
+
+       public Builder copy(AuctionHistory auctionHistory) {
+            this.historyId = auctionHistory.getHistoryId();
+            this.auctionSessionId = auctionHistory.getAuctionSessionId();
+            this.carVIN = auctionHistory.getCarVIN();
+            this.userId = auctionHistory.getUserId();
+            this.sellerId = auctionHistory.getSellerId();
+            this.buyerId = auctionHistory.getBuyerId();
+            this.finalPrice = auctionHistory.getFinalPrice();
+            this.auctionDate = auctionHistory.getAuctionDate();
+            this.status = auctionHistory.getStatus();
+            return this;
         }
+
         public AuctionHistory build() {
             return new AuctionHistory(this);
         }

@@ -12,10 +12,11 @@ public class AuctionHistoryFactory
             String auctionSessionId,
             String carVIN,
             String userId,
-            double bidAmount,
-            LocalDate bidDate,
-            String status,
-            int totalBids)
+            String sellerId,
+            String buyerId,
+            double finalPrice,
+            LocalDate auctionDate,
+            String status)
     {
         if (Helper.isNullOrEmpty(auctionSessionId) || Helper.isNullOrEmpty(carVIN) ||
                 Helper.isNullOrEmpty(userId))
@@ -26,10 +27,11 @@ public class AuctionHistoryFactory
                 .setAuctionSessionId(auctionSessionId)
                 .setCarVIN(carVIN)
                 .setUserId(userId)
-                .setBidAmount(bidAmount)
-                .setBidDate(bidDate)
+                .setSellerId(sellerId)
+                .setBuyerId(buyerId)
+                .setFinalPrice(finalPrice)
+                .setAuctionDate(auctionDate)
                 .setStatus(status)
-                .setTotalBids(totalBids)
                 .build();
     }
 
