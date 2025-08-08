@@ -15,7 +15,7 @@ public class Individual {
     private String lastName;
     private String emailAddress;
     private LocalDate dateOfBirth;
-    private int identityNumber;
+    private String identityNumber;
     private String phoneNumber;
     private String homeAddress;
 
@@ -53,7 +53,7 @@ public class Individual {
         return dateOfBirth;
     }
 
-    public int getIdentityNumber() {
+    public String getIdentityNumber() {
         return identityNumber;
     }
 
@@ -85,7 +85,7 @@ public class Individual {
         private String lastName;
         private String emailAddress;
         private LocalDate dateOfBirth;
-        private int identityNumber;
+        private String identityNumber;
         private String phoneNumber;
         private String homeAddress;
 
@@ -114,7 +114,7 @@ public class Individual {
             return this;
         }
 
-        public Builder setIdentityNumber(int identityNumber) {
+        public Builder setIdentityNumber(String identityNumber) {
             this.identityNumber = identityNumber;
             return this;
         }

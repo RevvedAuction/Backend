@@ -6,7 +6,6 @@ package za.co.revvedAuctions.domain;
    Date: 11 May 2025
 */
 
-
 public class Buyer {
     private String buyerId;
     private String userId;
