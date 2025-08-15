@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="42881556-0ccd-49d0-a45b-6dddb970fe59" name="Changes" comment="update to the Car">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/AuctionHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/AuctionSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Bid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Buyer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Company.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Individual.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/Seller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/domain/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/AuctionHistoryFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/AuctionSessionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/BidFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/CarFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/CompanyFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/IndividualFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/NotificationFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/PaymentFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/factory/SellerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/repository/AuctionSessionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/repository/SellerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/service/AuctionSessionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/service/CarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/service/IAuctionSessionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/service/ICarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/service/ISellerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/service/IService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/service/SellerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/util/Helper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/AuctionHistoryFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/AuctionSessionFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/BidFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/CompanyFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/IndividualFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/NotificationFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/PaymentFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/factory/SellerFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/service/AuctionSessionServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/service/CarServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/co/revvedAuctions/service/SellerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/repository/CarRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/repository/CarRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/repository/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/co/revvedAuctions/repository/IRepository.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LiamMatthews27&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/RevvedAuction/Backend.git&quot;,
+    &quot;accountId&quot;: &quot;a56e5a39-bc3b-4626-ad1f-c887abff10d8&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="30fyfuuc0gQ4BzIJrbJojiGoYc4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.CarRepositoryTest.a_create.executor": "Debug",
+    "JUnit.CarRepositoryTest.c_update.executor": "Debug",
+    "JUnit.CarRepositoryTest.executor": "Run",
+    "JUnit.CarServiceTest.c_update.executor": "Debug",
+    "JUnit.CarServiceTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/NewUsername/IdeaProjects/Backend-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="za.co.revvedAuctions.service" />
+      <recent name="za.co.revvedAuctions.repository" />
+      <recent name="za.co.revvedAuctions.factory" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CarServiceTest">
+    <configuration name="CarRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.co.revvedAuctions.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.co.revvedAuctions.repository" />
+      <option name="MAIN_CLASS_NAME" value="za.co.revvedAuctions.repository.CarRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CarRepositoryTest.c_update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.co.revvedAuctions.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.co.revvedAuctions.repository" />
+      <option name="MAIN_CLASS_NAME" value="za.co.revvedAuctions.repository.CarRepositoryTest" />
+      <option name="METHOD_NAME" value="c_update" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CarServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.co.revvedAuctions.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.co.revvedAuctions.service" />
+      <option name="MAIN_CLASS_NAME" value="za.co.revvedAuctions.service.CarServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CarServiceTest.c_update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.co.revvedAuctions.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.co.revvedAuctions.service" />
+      <option name="MAIN_CLASS_NAME" value="za.co.revvedAuctions.service.CarServiceTest" />
+      <option name="METHOD_NAME" value="c_update" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CarServiceTest" />
+        <item itemvalue="JUnit.CarServiceTest.c_update" />
+        <item itemvalue="JUnit.CarRepositoryTest" />
+        <item itemvalue="JUnit.CarRepositoryTest.c_update" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26574.91" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26574.91" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42881556-0ccd-49d0-a45b-6dddb970fe59" name="Changes" comment="" />
+      <created>1754033028389</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754033028389</updated>
+      <workItem from="1754033029463" duration="1765000" />
+      <workItem from="1754216129029" duration="29156000" />
+      <workItem from="1754849123480" duration="1825000" />
+      <workItem from="1754939833412" duration="8070000" />
+      <workItem from="1755185484296" duration="8234000" />
+    </task>
+    <task id="LOCAL-00001" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263110961</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263110961</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263161280</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263161280</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263194363</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263194363</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263226251</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263226251</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263252345</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263252345</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263333328</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263333328</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263338127</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263338127</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754263382802</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1754263382802</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754296287511</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1754296287511</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754296294699</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1754296294699</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754317872590</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1754317872590</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1754318307314</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1754318307314</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1755192533939</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1755192533939</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1755263087118</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1755263087118</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1755263893505</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1755263893505</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1755263914260</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1755263914260</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1755264575563</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1755264575563</updated>
+    </task>
+    <task id="LOCAL-00018" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1755264580873</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1755264580873</updated>
+    </task>
+    <task id="LOCAL-00019" summary="update to the Car">
+      <option name="closed" value="true" />
+      <created>1755264599588</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1755264599588</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update to the Car" />
+    <option name="LAST_COMMIT_MESSAGE" value="update to the Car" />
+  </component>
+</project>
