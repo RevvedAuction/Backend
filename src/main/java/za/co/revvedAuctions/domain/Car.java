@@ -1,28 +1,41 @@
 package za.co.revvedAuctions.domain;
 
-/*
-User.java
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-User POJO class
-
-Author: L Matthews(221818340)
-
-Date: 11 May 2025
-
-*/
-
+/**
+ * Car entity for auctions
+ * Author: L Matthews (221818340) | Updated by Esihle
+ * Date: 11 May 2025
+ */
+@Entity
+@Table(name = "cars")
 public class Car {
 
+    @Id
+    @Column(name = "car_vin", nullable = false, unique = true)
     private String carVIN;
+
+    @Column(nullable = false)
     private String carMake;
+
+    @Column(nullable = false)
     private String carModel;
+
     private int carYear;
+
     private int carMileage;
+
+    @Column(nullable = false)
     private String carStatus;
+
+    @Column(length = 1000)
     private String media;
 
-    public Car() {
-    }
+    @Column(nullable = false)
+    private LocalDateTime auctionEndTime;
+
+    protected Car() {}
 
     private Car(Builder builder) {
         this.carVIN = builder.carVIN;
@@ -32,6 +45,7 @@ public class Car {
         this.carMileage = builder.carMileage;
         this.carStatus = builder.carStatus;
         this.media = builder.media;
+        this.auctionEndTime = builder.auctionEndTime;
     }
 
     public String getCarVIN() {
@@ -62,6 +76,10 @@ public class Car {
         return media;
     }
 
+    public LocalDateTime getAuctionEndTime() {
+        return auctionEndTime;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -72,6 +90,7 @@ public class Car {
                 ", carMileage=" + carMileage +
                 ", carStatus='" + carStatus + '\'' +
                 ", media='" + media + '\'' +
+                ", auctionEndTime=" + auctionEndTime +
                 '}';
     }
 
@@ -83,6 +102,7 @@ public class Car {
         private int carMileage;
         private String carStatus;
         private String media;
+        private LocalDateTime auctionEndTime;
 
         public Builder setCarVIN(String carVIN) {
             this.carVIN = carVIN;
@@ -119,6 +139,11 @@ public class Car {
             return this;
         }
 
+        public Builder setAuctionEndTime(LocalDateTime auctionEndTime) {
+            this.auctionEndTime = auctionEndTime;
+            return this;
+        }
+
         public Builder copy(Car car) {
             this.carVIN = car.getCarVIN();
             this.carMake = car.getCarMake();
@@ -127,6 +152,7 @@ public class Car {
             this.carMileage = car.getCarMileage();
             this.carStatus = car.getCarStatus();
             this.media = car.getMedia();
+            this.auctionEndTime = car.getAuctionEndTime();
             return this;
         }
 
