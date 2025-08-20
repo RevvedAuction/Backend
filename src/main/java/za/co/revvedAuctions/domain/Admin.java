@@ -4,12 +4,22 @@ package za.co.revvedAuctions.domain;
    Author: Zintle Mgqongose 214280829
    Date: 11 May 2025
 */
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import za.co.revvedAuctions.util.Helper;
+
 import java.time.LocalDate;
 
 
+@Entity
 public class Admin {
+    @Id
+    @Column(name = "adminID", unique = true, nullable = false)
     private String adminId;
     private String fullName;
+
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
     private String password;
     private String phoneNumber;
@@ -20,7 +30,7 @@ public class Admin {
     protected Admin() {
     }
 
-    public Admin(Builder builder) {
+    protected Admin(Builder builder) {
         this.adminId = builder.adminId;
         this.fullName = builder.fullName;
         this.email = builder.email;
@@ -69,7 +79,7 @@ public class Admin {
                 "adminId='" + adminId + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", password='***'" + // Masked password
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
                 ", isActive=" + isActive +
@@ -98,6 +108,9 @@ public class Admin {
         }
 
         public Builder setEmail(String email) {
+            if (!Helper.isValidEmail(email)) {
+                throw new IllegalArgumentException("Invalid email format: " + email);
+            }
             this.email = email;
             return this;
         }
@@ -144,4 +157,3 @@ public class Admin {
         }
     }
 }
-
