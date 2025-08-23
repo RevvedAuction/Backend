@@ -10,6 +10,5 @@ import java.util.List;
 public interface BidRepository extends JpaRepository<Bid, Integer> {
     List<Bid> findByAuctionSessionId(String auctionSessionId);
 
-
 }
 

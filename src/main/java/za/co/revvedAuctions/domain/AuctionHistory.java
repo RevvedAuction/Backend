@@ -5,11 +5,17 @@ package za.co.revvedAuctions.domain;
  * Author: Engetelo Mathebane (230227767)
  * Date: 2025-05-11
  */
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
-
+@Entity
 public class AuctionHistory {
-
-    protected short historyId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected int historyId;
 
     protected String auctionSessionId;
 
@@ -42,7 +48,7 @@ public class AuctionHistory {
         this.status = builder.status;
     }
 
-    public short getHistoryId() {
+    public int getHistoryId() {
         return historyId;
     }
 
@@ -93,7 +99,7 @@ public class AuctionHistory {
                 '}';
     }
     public static class Builder {
-        protected short historyId;
+        protected int historyId;
         protected String auctionSessionId;
         protected String carVIN;
         protected String userId;
@@ -103,7 +109,7 @@ public class AuctionHistory {
         protected LocalDate auctionDate;
         protected String status;
 
-        public Builder setHistoryId(short historyId) {
+        public Builder setHistoryId(int historyId) {
             this.historyId = historyId;
             return this;
         }

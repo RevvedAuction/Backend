@@ -8,7 +8,6 @@ import java.time.LocalDate;
 public class AuctionHistoryFactory
 {
     public static AuctionHistory createAuctionHistory(
-            short historyId,
             String auctionSessionId,
             String carVIN,
             String userId,
@@ -23,7 +22,6 @@ public class AuctionHistoryFactory
             return null;
 
         return new AuctionHistory.Builder()
-                .setHistoryId(historyId)
                 .setAuctionSessionId(auctionSessionId)
                 .setCarVIN(carVIN)
                 .setUserId(userId)
