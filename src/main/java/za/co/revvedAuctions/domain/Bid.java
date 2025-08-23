@@ -7,17 +7,25 @@ package za.co.revvedAuctions.domain;
  * Date: 2025-05-11
  */
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
+@Entity
 public class Bid {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int bidId;
 
     protected String carVIN;
 
-    protected String AuctionSessionId;
+    protected String auctionSessionId;
 
-    protected String  userId;
+    protected String userId;
 
     protected double bidAmount;
 
@@ -27,13 +35,13 @@ public class Bid {
 
     protected int totalBids;
 
-    protected  Bid(){
+    protected Bid() {
     }
 
     public Bid(Builder builder) {
         this.bidId = builder.bidId;
         this.carVIN = builder.carVIN;
-        this.AuctionSessionId = builder.AuctionSessionId;
+        this.auctionSessionId = builder.auctionSessionId;
         this.userId = builder.userId;
         this.bidAmount = builder.bidAmount;
         this.bidDate = builder.bidDate;
@@ -50,7 +58,7 @@ public class Bid {
     }
 
     public String getAuctionSessionId() {
-        return AuctionSessionId;
+        return auctionSessionId;
     }
 
     public String getUserId() {
@@ -78,7 +86,7 @@ public class Bid {
         return "Bid{" +
                 "bidId=" + bidId +
                 ", carVIN='" + carVIN + '\'' +
-                ", AuctionSessionId='" + AuctionSessionId + '\'' +
+                ", auctionSessionId='" + auctionSessionId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", bidAmount=" + bidAmount +
                 ", bidDate=" + bidDate +
@@ -87,21 +95,14 @@ public class Bid {
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         protected int bidId;
-
         protected String carVIN;
-
-        protected String AuctionSessionId;
-
-        protected String  userId;
-
+        protected String auctionSessionId;
+        protected String userId;
         protected double bidAmount;
-
         protected LocalDate bidDate;
-
         protected String status;
-
         protected int totalBids;
 
         public Builder setBidId(int bidId) {
@@ -115,7 +116,7 @@ public class Bid {
         }
 
         public Builder setAuctionSessionId(String auctionSessionId) {
-            AuctionSessionId = auctionSessionId;
+            this.auctionSessionId = auctionSessionId;
             return this;
         }
 
@@ -147,7 +148,7 @@ public class Bid {
         public Builder copy(Bid bid) {
             this.bidId = bid.bidId;
             this.carVIN = bid.carVIN;
-            this.AuctionSessionId = bid.AuctionSessionId;
+            this.auctionSessionId = bid.auctionSessionId;
             this.userId = bid.userId;
             this.bidAmount = bid.bidAmount;
             this.bidDate = bid.bidDate;
@@ -155,6 +156,7 @@ public class Bid {
             this.totalBids = bid.totalBids;
             return this;
         }
+
         public Bid build() {
             return new Bid(this);
         }
