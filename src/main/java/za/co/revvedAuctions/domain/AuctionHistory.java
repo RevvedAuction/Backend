@@ -5,10 +5,18 @@ package za.co.revvedAuctions.domain;
  * Author: Engetelo Mathebane (230227767)
  * Date: 2025-05-11
  */
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
+@Entity
 public class AuctionHistory {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected short historyId;
 
     protected String auctionSessionId;
