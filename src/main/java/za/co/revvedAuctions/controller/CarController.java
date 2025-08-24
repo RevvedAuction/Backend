@@ -1,6 +1,7 @@
 package za.co.revvedAuctions.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.revvedAuctions.domain.Car;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cars")
-@CrossOrigin(origins = "http://localhost:8080") // Adjust for your Vue.js frontend port
+@CrossOrigin(origins = "http://localhost:8082") // Adjust for your Vue.js frontend port
 public class CarController {
 
     private final CarService carService;
@@ -21,10 +22,10 @@ public class CarController {
     }
 
     // Add a new car
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Car> createCar(@RequestBody Car car) {
         Car savedCar = carService.saveCar(car);
-        return ResponseEntity.ok(savedCar);
+        return new ResponseEntity<>(savedCar, HttpStatus.CREATED);
     }
 
     // Get a single car by VIN
@@ -70,8 +71,12 @@ public class CarController {
     }
 
     // Delete car
-    @DeleteMapping("/{vin}")
-    public ResponseEntity<Void> deleteCar(@PathVariable("vin") String vin) {
+    @DeleteMapping("/delete/{vin}")
+    public ResponseEntity<?> deleteCar(@PathVariable("vin") String vin) {
+        Car car = carService.getCarByVIN(vin);
+        if (car == null) {
+            return ResponseEntity.notFound().build();
+        }
         carService.deleteCar(vin);
         return ResponseEntity.noContent().build();
     }
@@ -80,5 +85,6 @@ public class CarController {
     @GetMapping
     public ResponseEntity<List<Car>> getAllCars() {
         return ResponseEntity.ok(carService.getAllCars());
+
     }
 }
