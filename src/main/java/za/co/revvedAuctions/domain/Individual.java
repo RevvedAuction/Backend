@@ -3,19 +3,27 @@ Individual.java
 Author: Esihle Mlinjana
 Student Number: 222441712
 Date: 11 May 2025
- */
+*/
 package za.co.revvedAuctions.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import java.time.LocalDate;
 
+@Entity
 public class Individual {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int individualId;
+
     private String firstName;
     private String lastName;
     private String emailAddress;
     private LocalDate dateOfBirth;
-    private int identityNumber;
+    private String identityNumber;
     private String phoneNumber;
     private String homeAddress;
 
@@ -32,38 +40,14 @@ public class Individual {
         this.phoneNumber = builder.phoneNumber;
         this.homeAddress = builder.homeAddress;
     }
-
-    public int getIndividualId() {
-        return individualId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public int getIdentityNumber() {
-        return identityNumber;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getHomeAddress() {
-        return homeAddress;
-    }
+    public int getIndividualId() { return individualId; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getEmailAddress() { return emailAddress; }
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
+    public String getIdentityNumber() { return identityNumber; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public String getHomeAddress() { return homeAddress; }
 
     @Override
     public String toString() {
@@ -85,49 +69,18 @@ public class Individual {
         private String lastName;
         private String emailAddress;
         private LocalDate dateOfBirth;
-        private int identityNumber;
+        private String identityNumber;
         private String phoneNumber;
         private String homeAddress;
 
-        public Builder setIndividualId(int individualId) {
-            this.individualId = individualId;
-            return this;
-        }
-
-        public Builder setFirstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
-
-        public Builder setLastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
-        public Builder setEmailAddress(String emailAddress) {
-            this.emailAddress = emailAddress;
-            return this;
-        }
-
-        public Builder setDateOfBirth(LocalDate dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-            return this;
-        }
-
-        public Builder setIdentityNumber(int identityNumber) {
-            this.identityNumber = identityNumber;
-            return this;
-        }
-
-        public Builder setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-            return this;
-        }
-
-        public Builder setHomeAddress(String homeAddress) {
-            this.homeAddress = homeAddress;
-            return this;
-        }
+        public Builder setIndividualId(int individualId) { this.individualId = individualId; return this; }
+        public Builder setFirstName(String firstName) { this.firstName = firstName; return this; }
+        public Builder setLastName(String lastName) { this.lastName = lastName; return this; }
+        public Builder setEmailAddress(String emailAddress) { this.emailAddress = emailAddress; return this; }
+        public Builder setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; return this; }
+        public Builder setIdentityNumber(String identityNumber) { this.identityNumber = identityNumber; return this; }
+        public Builder setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; return this; }
+        public Builder setHomeAddress(String homeAddress) { this.homeAddress = homeAddress; return this; }
 
         public Builder copy(Individual individual){
             this.individualId = individual.individualId;
@@ -140,8 +93,7 @@ public class Individual {
             this.homeAddress = individual.homeAddress;
             return this;
         }
-        public Individual build(){
-            return new Individual(this);
-        }
+
+        public Individual build(){ return new Individual(this); }
     }
 }

@@ -27,7 +27,7 @@ public class IndividualFactory {
                 .build();
     }
 
-    public static Individual createIndividual(int individualId, String firstName, String lastName, String emailAddress, LocalDate dateOfBirth, int identityNumber, String phoneNumber, String homeAddress) {
+    public static Individual createIndividual(int individualId, String firstName, String lastName, String emailAddress, LocalDate dateOfBirth, String identityNumber, String phoneNumber, String homeAddress) {
         if (Helper.isNullOrEmpty(individualId) || Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || !Helper.isValidEmail(emailAddress) || Helper.isNullOrEmpty(dateOfBirth) || Helper.isNullOrEmpty(identityNumber) || Helper.isNullOrEmpty(phoneNumber) || Helper.isNullOrEmpty(homeAddress)) {
             return null;
         }

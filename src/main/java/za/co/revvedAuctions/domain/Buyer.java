@@ -2,19 +2,40 @@ package za.co.revvedAuctions.domain;
 
 /* Buyer.java
    Buyer Entity Class using Builder Pattern
-   Author: Zintle Mgqongose 214280829
+   Author: Zintle Mgqongose (214280829)
    Date: 11 May 2025
 */
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import java.util.Objects;
 
+
+@Entity
 public class Buyer {
+    @Id
+    @Column(name = "buyerID", unique = true, nullable = false)
     private String buyerId;
+
+    @Column(name = "userID", nullable = false)
     private String userId;
+
+    @Column(name = "full_name", nullable = false)
     private String fullName;
+
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
+
+    private String password;
+
     private String phoneNumber;
+
     private String preferredCarType;
+
+    @Column(name = "payment_method", nullable = false)
     private String paymentMethod;
+
     private boolean isVerified;
 
     protected Buyer() {
@@ -25,6 +46,7 @@ public class Buyer {
         this.userId = builder.userId;
         this.fullName = builder.fullName;
         this.email = builder.email;
+        this.password = builder.password;
         this.phoneNumber = builder.phoneNumber;
         this.preferredCarType = builder.preferredCarType;
         this.paymentMethod = builder.paymentMethod;
@@ -45,6 +67,10 @@ public class Buyer {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getPhoneNumber() {
@@ -70,6 +96,7 @@ public class Buyer {
                 ", userId='" + userId + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", preferredCarType='" + preferredCarType + '\'' +
                 ", paymentMethod='" + paymentMethod + '\'' +
@@ -77,11 +104,25 @@ public class Buyer {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Buyer buyer = (Buyer) o;
+        return Objects.equals(buyerId, buyer.buyerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(buyerId);
+    }
+
     public static class Builder {
         private String buyerId;
         private String userId;
         private String fullName;
         private String email;
+        private String password;
         private String phoneNumber;
         private String preferredCarType;
         private String paymentMethod;
@@ -107,6 +148,11 @@ public class Buyer {
             return this;
         }
 
+        public Builder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
         public Builder setPhoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
@@ -123,11 +169,11 @@ public class Buyer {
         }
 
         public Builder setVerified(boolean verified) {
-            isVerified = verified;
+            this.isVerified = verified;
             return this;
         }
 
-        public Builder copy(Buyer buyer){
+        public Builder copy(Buyer buyer) {
             this.buyerId = buyer.buyerId;
             this.userId = buyer.userId;
             this.fullName = buyer.fullName;
@@ -140,7 +186,6 @@ public class Buyer {
         }
 
         public Buyer build() {
-
             return new Buyer(this);
         }
     }

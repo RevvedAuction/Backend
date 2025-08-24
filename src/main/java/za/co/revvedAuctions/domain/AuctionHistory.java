@@ -11,11 +11,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.time.LocalDate;
+
 @Entity
 public class AuctionHistory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int historyId;
+    protected 
 
     protected String auctionSessionId;
 
