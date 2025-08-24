@@ -17,7 +17,7 @@ public class AuctionHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected short historyId;
+    protected 
 
     protected String auctionSessionId;
 
@@ -50,7 +50,7 @@ public class AuctionHistory {
         this.status = builder.status;
     }
 
-    public short getHistoryId() {
+    public int getHistoryId() {
         return historyId;
     }
 
@@ -101,7 +101,7 @@ public class AuctionHistory {
                 '}';
     }
     public static class Builder {
-        protected short historyId;
+        protected int historyId;
         protected String auctionSessionId;
         protected String carVIN;
         protected String userId;
@@ -111,7 +111,7 @@ public class AuctionHistory {
         protected LocalDate auctionDate;
         protected String status;
 
-        public Builder setHistoryId(short historyId) {
+        public Builder setHistoryId(int historyId) {
             this.historyId = historyId;
             return this;
         }

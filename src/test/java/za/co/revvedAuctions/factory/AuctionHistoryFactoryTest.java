@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AuctionHistoryFactoryTest {
 
     public static AuctionHistory auctionHistory1 = AuctionHistoryFactory.createAuctionHistory(
-            (short) 1,
+
             "AS123",
             "VIN123456",
             "USER123",
@@ -21,7 +21,7 @@ class AuctionHistoryFactoryTest {
             "Completed");
 
     public static AuctionHistory auctionHistory2 = AuctionHistoryFactory.createAuctionHistory(
-            (short) 2,
+
             "AS456",
             "",
             "",
