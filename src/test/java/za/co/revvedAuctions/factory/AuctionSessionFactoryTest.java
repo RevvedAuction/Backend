@@ -22,7 +22,7 @@ class AuctionSessionFactoryTest {
     private static AuctionSession auctionSessionList2 = AuctionSessionFactory.createAuctionSession(
             "",
             LocalTime.of(10, 0),
-            LocalTime.of(13, 30),
+            LocalTime.of(13, 30), 
             LocalDate.of(2025, 4, 28),
             true,
             "1HGCM835733A004352"
