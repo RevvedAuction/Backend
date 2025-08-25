@@ -3,22 +3,47 @@ package za.co.revvedAuctions.domain;
 Author: Fhumulani Moses Makungo (230787932)
 alias: KodeKnack
  */
+import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "payments")
 
 public class Payment {
-    protected int paymentID;
-    double amount;
-    String paymentMethod;
-    LocalDate paymentDate;
-    String status;
-    int buyerID;
-    int auctionID;
-    boolean isRefunded;
-    boolean processPay;
 
-    public Payment(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
+    private int paymentID;
 
-    public Payment (Builder builder) {
+    @Column(nullable = false)
+    private double amount;
+
+    @Column(name = "payment_method", nullable = false)
+    private String paymentMethod;
+
+    @Column(name = "payment_date", nullable = false)
+    private LocalDateTime paymentDate;
+
+    @Column(nullable = false)
+    private String status;
+
+    @Column(name = "buyer_id", nullable = false)
+    private int buyerID;
+
+    @Column(name = "auction_id", nullable = false)
+    private int auctionID;
+
+    @Column(name = "is_refunded")
+    private boolean isRefunded;
+
+    @Column(name = "process_pay")
+    private boolean processPay;
+
+    protected Payment() {}
+
+    private Payment(Builder builder) {
         this.paymentID = builder.paymentID;
         this.amount = builder.amount;
         this.paymentMethod = builder.paymentMethod;
@@ -29,6 +54,7 @@ public class Payment {
         this.isRefunded = builder.isRefunded;
         this.processPay = builder.processPay;
     }
+
 
     public int getPaymentID() {
         return paymentID;
@@ -42,7 +68,7 @@ public class Payment {
         return paymentMethod;
     }
 
-    public LocalDate getPaymentDate() {
+    public LocalDateTime getPaymentDate() {
         return paymentDate;
     }
 
@@ -83,14 +109,14 @@ public class Payment {
 
     public static class Builder {
         private int paymentID;
-        double amount;
-        String paymentMethod;
-        LocalDate paymentDate;
-        String status;
-        int buyerID;
-        int auctionID;
-        boolean isRefunded;
-        boolean processPay;
+        private double amount;
+        private String paymentMethod;
+        private LocalDate paymentDate;
+        private String status;
+        private int buyerID;
+        private int auctionID;
+        private boolean isRefunded;
+        private boolean processPay;
 
         public Builder setPaymentID(int paymentID) {
             this.paymentID = paymentID;
@@ -134,6 +160,19 @@ public class Payment {
 
         public Builder setProcessPay(boolean processPay) {
             this.processPay = processPay;
+            return this;
+        }
+
+        public Builder copy(Payment payment) {
+            this.paymentID = payment.getPaymentID();
+            this.amount = payment.getAmount();
+            this.paymentMethod = payment.getPaymentMethod();
+            this.paymentDate = payment.getPaymentDate();
+            this.status = payment.getStatus();
+            this.buyerID = payment.getBuyerID();
+            this.auctionID = payment.getAuctionID();
+            this.isRefunded = payment.isRefunded();
+            this.processPay = payment.isProcessPay();
             return this;
         }
 
