@@ -18,8 +18,10 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adminId;
-
+    private String adminId;
     private String fullName;
+
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
     private String password;
     private String phoneNumber;
@@ -30,7 +32,7 @@ public class Admin {
     protected Admin() {
     }
 
-    public Admin(Builder builder) {
+    protected Admin(Builder builder) {
         this.adminId = builder.adminId;
         this.fullName = builder.fullName;
         this.email = builder.email;
@@ -57,7 +59,7 @@ public class Admin {
                 "adminId=" + adminId +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", password='***'" + // Masked password
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
                 ", isActive=" + isActive +
@@ -84,6 +86,48 @@ public class Admin {
         public Builder setRole(String role) { this.role = role; return this; }
         public Builder setActive(boolean isActive) { this.isActive = isActive; return this; }
         public Builder setDateCreated(LocalDate dateCreated) { this.dateCreated = dateCreated; return this; }
+        public Builder setAdminId(String adminId) {
+            this.adminId = adminId;
+            return this;
+        }
+
+        public Builder setFullName(String fullName) {
+            this.fullName = fullName;
+            return this;
+        }
+
+        public Builder setEmail(String email) {
+            if (!Helper.isValidEmail(email)) {
+                throw new IllegalArgumentException("Invalid email format: " + email);
+            }
+            this.email = email;
+            return this;
+        }
+
+        public Builder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        public Builder setRole(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder setActive(boolean isActive) {
+            this.isActive = isActive;
+            return this;
+        }
+
+        public Builder setDateCreated(LocalDate dateCreated) {
+            this.dateCreated = dateCreated;
+            return this;
+        }
 
         public Builder copy(Admin admin) {
             this.adminId = admin.adminId;
