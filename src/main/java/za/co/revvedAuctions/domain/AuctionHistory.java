@@ -17,7 +17,7 @@ public class AuctionHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected 
+    protected int historyId;
 
     protected String auctionSessionId;
 
