@@ -2,11 +2,12 @@ package za.co.revvedAuctions.domain;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Base64;
 
 /**
  * Car entity for auctions
- * Author: L Matthews (221818340) | Updated by Esihle
- * Date: 11 May 2025
+ * Author: Esihle Mlinjana (222441712)
  */
 @Entity
 @Table(name = "cars")
@@ -29,11 +30,23 @@ public class Car {
     @Column(nullable = false)
     private String carStatus;
 
-    @Column(length = 1000)
-    private String media;
-
     @Column(nullable = false)
     private LocalDateTime auctionEndTime;
+
+    @Lob
+    @Column(name = "media", columnDefinition = "LONGBLOB")
+    private byte[] media;
+
+    /**
+     * Returns the media as a Base64 string suitable for <img> in frontend.
+     */
+    @Transient
+    public String getMediaBase64() {
+        if (media != null && media.length > 0) {
+            return "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(media);
+        }
+        return null;
+    }
 
     protected Car() {}
 
@@ -72,7 +85,7 @@ public class Car {
         return carStatus;
     }
 
-    public String getMedia() {
+    public byte[] getMedia() {   // ✅ fixed type
         return media;
     }
 
@@ -89,7 +102,7 @@ public class Car {
                 ", carYear=" + carYear +
                 ", carMileage=" + carMileage +
                 ", carStatus='" + carStatus + '\'' +
-                ", media='" + media + '\'' +
+                ", media=" + Arrays.toString(media) +   // ✅ prevent [B@hashcode
                 ", auctionEndTime=" + auctionEndTime +
                 '}';
     }
@@ -101,7 +114,7 @@ public class Car {
         private int carYear;
         private int carMileage;
         private String carStatus;
-        private String media;
+        private byte[] media; // ✅ fixed type
         private LocalDateTime auctionEndTime;
 
         public Builder setCarVIN(String carVIN) {
@@ -134,7 +147,7 @@ public class Car {
             return this;
         }
 
-        public Builder setMedia(String media) {
+        public Builder setMediaBase64(byte[] media) {  // ✅ fixed type
             this.media = media;
             return this;
         }
@@ -151,7 +164,7 @@ public class Car {
             this.carYear = car.getCarYear();
             this.carMileage = car.getCarMileage();
             this.carStatus = car.getCarStatus();
-            this.media = car.getMedia();
+            this.media = car.getMedia();  // ✅ now consistent
             this.auctionEndTime = car.getAuctionEndTime();
             return this;
         }
