@@ -24,7 +24,7 @@ public class Payment {
     private String paymentMethod;
 
     @Column(name = "payment_date", nullable = false)
-    private LocalDateTime paymentDate;
+    private LocalDate paymentDate;
 
     @Column(nullable = false)
     private String status;
@@ -55,6 +55,18 @@ public class Payment {
         this.processPay = builder.processPay;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setProcessPay(boolean processPay) {
+        this.processPay = processPay;
+    }
+
+    public void setRefunded(boolean refunded) {
+        this.isRefunded = refunded;
+    }
+
 
     public int getPaymentID() {
         return paymentID;
@@ -68,7 +80,7 @@ public class Payment {
         return paymentMethod;
     }
 
-    public LocalDateTime getPaymentDate() {
+    public LocalDate getPaymentDate() {
         return paymentDate;
     }
 
