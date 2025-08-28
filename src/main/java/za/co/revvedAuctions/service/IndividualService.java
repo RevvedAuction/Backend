@@ -3,7 +3,7 @@ package za.co.revvedAuctions.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Individual;
-import za.co.revvedAuctions.repository.IndividualRepository;
+import za.co.revvedAuctions.repository.IIndividualRepository;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class IndividualService implements iIndividualService{
     private static IndividualService service;
 
     @Autowired
-    private IndividualRepository repository;
+    private IIndividualRepository repository;
 
     public static iIndividualService getService() {
         if (service == null) {
@@ -28,8 +28,8 @@ public class IndividualService implements iIndividualService{
     }
 
     @Override
-    public Individual read(String string) {
-        return this.repository.findById(string).orElse(null);
+    public Individual read(Integer integer) {
+        return this.repository.findById(integer).orElse(null);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class IndividualService implements iIndividualService{
     }
 
     @Override
-    public boolean delete(String string) {
-        this.repository.deleteById(string);
+    public boolean delete(Integer integer) {
+        this.repository.deleteById(integer);
         return true;
     }
     @Override
