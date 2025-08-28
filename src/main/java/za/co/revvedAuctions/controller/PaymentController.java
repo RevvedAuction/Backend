@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.revvedAuctions.domain.Payment;
-import za.co.revvedAuctions.service.implementation.PaymentService;
+import za.co.revvedAuctions.service.PaymentService;
 
 import java.util.List;
 
