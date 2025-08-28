@@ -33,6 +33,13 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public User delete(String userId) {
+        User toDelete = read(userId);
+        repository.delete(toDelete);
+        return toDelete;
+    }
+
+    @Override
     public List<User> getAll() {
         return this.repository.findAll();
     }

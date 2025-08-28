@@ -17,10 +17,6 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-//    public Optional<Car> getActiveAuctions() {
-//        return carRepository.findByAuctionEndTimeAfter(LocalDateTime.now());
-//    }
-
     public Car saveCar(Car car) {
         return carRepository.save(car);
     }

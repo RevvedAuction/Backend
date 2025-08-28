@@ -5,5 +5,6 @@ import za.co.revvedAuctions.domain.User;
 import java.util.List;
 
 public interface IUserService extends IService<User, String> {
+    User delete(String userId);
     List<User> getAll();
 }

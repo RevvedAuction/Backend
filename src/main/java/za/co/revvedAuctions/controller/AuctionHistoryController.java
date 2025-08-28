@@ -41,15 +41,6 @@ public class AuctionHistoryController {
         return ResponseEntity.ok(updated);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        AuctionHistory existing = service.read(id);
-        if (existing == null) return ResponseEntity.notFound().build();
-
-        service.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
     @GetMapping("/getAll")
     public ResponseEntity<List<AuctionHistory>> getAll() {
         List<AuctionHistory> list = service.getAll();
