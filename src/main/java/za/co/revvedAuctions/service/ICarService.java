@@ -4,9 +4,7 @@ import za.co.revvedAuctions.domain.Car;
 
 import java.util.List;
 
-public interface iCarService  extends IService<Car, String> {
+public interface ICarService extends IService<Car, String> {
 
     List<Car> getAll();
-
-    List<Car> getActiveAuctions();
 }

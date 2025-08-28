@@ -1,25 +1,20 @@
-package za.co.revvedAuctions.service;
+package za.co.revvedAuctions.service.implementation;
 
 import za.co.revvedAuctions.domain.Seller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.repository.SellerRepository;
+import za.co.revvedAuctions.service.ISellerService;
 
 import java.util.List;
 
 @Service
-public class SellerService implements ISellerService{
+public class SellerService implements ISellerService {
 
-    private static SellerService service;
-
-    @Autowired
     private SellerRepository repository;
-
-    public static ISellerService getService() {
-        if (service == null) {
-            service = new SellerService();
-        }
-        return service;
+    @Autowired
+    public SellerService(SellerRepository repository){
+        this.repository = repository;
     }
 
     @Override
@@ -34,12 +29,6 @@ public class SellerService implements ISellerService{
     @Override
     public Seller update(Seller seller) {
         return this.repository.save(seller);
-    }
-
-    @Override
-    public boolean delete(String string) {
-        this.repository.deleteById(string);
-        return true;
     }
 
     @Override
