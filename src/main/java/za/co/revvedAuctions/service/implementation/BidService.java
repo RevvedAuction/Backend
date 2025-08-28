@@ -1,9 +1,10 @@
-package za.co.revvedAuctions.service;
+package za.co.revvedAuctions.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Bid;
 import za.co.revvedAuctions.repository.BidRepository;
+import za.co.revvedAuctions.service.IBidService;
 
 import java.util.List;
 
@@ -30,15 +31,6 @@ public class BidService implements IBidService {
     @Override
     public Bid update(Bid bid) {
         return repository.save(bid);
-    }
-
-    @Override
-    public boolean delete(Integer id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-            return true;
-        }
-        return false;
     }
 
     @Override

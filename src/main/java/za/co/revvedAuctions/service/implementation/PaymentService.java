@@ -1,19 +1,20 @@
-package za.co.revvedAuctions.service;
+package za.co.revvedAuctions.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Payment;
-import za.co.revvedAuctions.repository.IPaymentRepository;
+import za.co.revvedAuctions.repository.PaymentRepository;
+import za.co.revvedAuctions.service.IPaymentService;
 
 import java.util.List;
 
 @Service
 public class PaymentService implements IPaymentService {
 
-    private final IPaymentRepository paymentRepository;
+    private final PaymentRepository paymentRepository;
 
     @Autowired
-    public PaymentService(IPaymentRepository paymentRepository) {
+    public PaymentService(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
     }
 
