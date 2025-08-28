@@ -1,45 +1,57 @@
 package za.co.revvedAuctions.service;
 
-import za.co.revvedAuctions.domain.Individual;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.User;
-import za.co.revvedAuctions.repository.IUserRepository;
-import za.co.revvedAuctions.repository.IndividualRepository;
 import za.co.revvedAuctions.repository.UserRepository;
 
 import java.util.List;
 
+@Service
 public class UserService implements IUserService {
 
-    private IUserService userService;
-    private  IUserRepository repository ;
+    private UserRepository repository;
 
-    private UserService(){
-        repository =  UserRepository.getRepository();
-
+    @Autowired
+    public UserService(UserRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public User create(User user) {
-        return null;
+        return this.repository.save(user);
     }
 
     @Override
-    public User read(Integer integer) {
-        return null;
+    public User read(Long userId) {
+        return repository.findById(userId).orElse(null);
     }
 
     @Override
     public User update(User user) {
-        return null;
+        return this.repository.save(user);
     }
 
     @Override
-    public boolean delete(Integer integer) {
-        return false;
+    public boolean delete(Long userId) {
+        repository.deleteById(userId);
+        return !repository.existsById(userId);
     }
+
+
     @Override
     public List<User> getAll() {
-        return List.of();
+        return repository.findAll();
+    }
+
+
+    public User findByEmailAndPassword(String email, String password) {
+        return repository.findByUserEmailAndUserPassword(email, password).orElse(null);
+    }
+
+
+    public boolean existsByEmail(String email) {
+        return repository.existsByUserEmail(email);
     }
 
 }

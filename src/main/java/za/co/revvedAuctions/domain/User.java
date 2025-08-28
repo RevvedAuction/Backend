@@ -1,23 +1,33 @@
 package za.co.revvedAuctions.domain;
+
+import jakarta.persistence.*;
+
 /*
 User.java
-
 User POJO class
-
-Author: L Matthews(221818340)
-
-Date: 11 May 2025
-
+Author: Caitlin Malan (230426271)
 */
+
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @Column(name = "user_id")
+    private Long userID;
 
-    private String userID;
+    @Column(name = "user_type", nullable = false)
     private String userType;
-    private String userName;
+
+    @Column(name = "full_name", nullable = false)
+    private String userFullName;
+
+    @Column(name = "email", unique = true, nullable = false)
+    private String userEmail;
+
+    @Column(name = "password", nullable = false)
     private String userPassword;
-    private boolean sessionStatus;
-    private String carVIN;
+
 
     public User() {
     }
@@ -25,13 +35,12 @@ public class User {
     private User(Builder builder) {
         this.userID = builder.userID;
         this.userType = builder.userType;
-        this.userName = builder.userName;
+        this.userFullName = builder.userFullName;
+        this.userEmail = builder.userEmail;
         this.userPassword = builder.userPassword;
-        this.sessionStatus = builder.sessionStatus;
-        this.carVIN = builder.carVIN;
     }
 
-    public String getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
@@ -39,20 +48,16 @@ public class User {
         return userType;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserFullName() {
+        return userFullName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
     }
 
     public String getUserPassword() {
         return userPassword;
-    }
-
-    public boolean isSessionStatus() {
-        return sessionStatus;
-    }
-
-    public String getCarVIN() {
-        return carVIN;
     }
 
     @Override
@@ -60,22 +65,20 @@ public class User {
         return "User{" +
                 "userID='" + userID + '\'' +
                 ", userType='" + userType + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userFullName='" + userFullName + '\'' +
+                ", userEmail='" + userEmail + '\'' +
                 ", userPassword='" + userPassword + '\'' +
-                ", sessionStatus=" + sessionStatus +
-                ", carVIN='" + carVIN + '\'' +
                 '}';
     }
 
     public static class Builder {
-        private String userID;
+        private Long userID;
         private String userType;
-        private String userName;
+        private String userFullName;
+        private String userEmail;
         private String userPassword;
-        private boolean sessionStatus;
-        private String carVIN;
 
-        public Builder setUserID(String userID) {
+        public Builder setUserID(Long userID) {
             this.userID = userID;
             return this;
         }
@@ -85,8 +88,13 @@ public class User {
             return this;
         }
 
-        public Builder setUserName(String userName) {
-            this.userName = userName;
+        public Builder setUserFullName(String userFullName) {
+            this.userFullName = userFullName;
+            return this;
+        }
+
+        public Builder setUserEmail(String userEmail) {
+            this.userEmail = userEmail;
             return this;
         }
 
@@ -95,23 +103,12 @@ public class User {
             return this;
         }
 
-        public Builder setSessionStatus(boolean sessionStatus) {
-            this.sessionStatus = sessionStatus;
-            return this;
-        }
-
-        public Builder setCarVIN(String carVIN) {
-            this.carVIN = carVIN;
-            return this;
-        }
-
         public Builder copy(User user) {
             this.userID = user.getUserID();
             this.userType = user.getUserType();
-            this.userName = user.getUserName();
+            this.userFullName = user.getUserFullName();
+            this.userEmail = user.getUserEmail();
             this.userPassword = user.getUserPassword();
-            this.sessionStatus = user.isSessionStatus();
-            this.carVIN = user.getCarVIN();
             return this;
         }
 
@@ -119,5 +116,4 @@ public class User {
             return new User(this);
         }
     }
-
 }

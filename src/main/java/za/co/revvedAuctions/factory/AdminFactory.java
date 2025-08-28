@@ -32,7 +32,7 @@ public class AdminFactory {
         String adminId = UUID.randomUUID().toString();
 
         return new Admin.Builder()
-                .setAdminId(adminId)
+//                .setAdminId(adminId)
                 .setFullName(fullName)
                 .setEmail(email)
                 .setPassword(password)

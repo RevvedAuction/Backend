@@ -5,6 +5,7 @@ import za.co.revvedAuctions.repository.IRepository;
 
 import java.util.List;
 
-public interface IUserService extends IRepository<User, Integer> {
+public interface IUserService extends IService<User, Long> {
+
     List<User> getAll();
 }
