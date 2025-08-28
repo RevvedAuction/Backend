@@ -9,9 +9,14 @@ Author: L Matthews(221818340)
 Date: 11 May 2025
 
 */
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class User {
 
-
+    @Id
     private String userID;
     private String userType;
     private String userName;

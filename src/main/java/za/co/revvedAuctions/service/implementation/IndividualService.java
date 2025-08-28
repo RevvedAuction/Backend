@@ -1,25 +1,20 @@
-package za.co.revvedAuctions.service;
+package za.co.revvedAuctions.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Individual;
 import za.co.revvedAuctions.repository.IndividualRepository;
+import za.co.revvedAuctions.service.IIndividualService;
 
 import java.util.List;
 
 @Service
-public class IndividualService implements iIndividualService{
+public class IndividualService implements IIndividualService {
 
-    private static IndividualService service;
-
+    private final IndividualRepository repository;
     @Autowired
-    private IndividualRepository repository;
-
-    public static iIndividualService getService() {
-        if (service == null) {
-            service = new IndividualService();
-        }
-        return service;
+    public IndividualService(IndividualRepository repository) {
+        this.repository = repository;
     }
 
     @Override
@@ -28,8 +23,8 @@ public class IndividualService implements iIndividualService{
     }
 
     @Override
-    public Individual read(String string) {
-        return this.repository.findById(string).orElse(null);
+    public Individual read(String id) {
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override
@@ -37,11 +32,6 @@ public class IndividualService implements iIndividualService{
         return this.repository.save(individual);
     }
 
-    @Override
-    public boolean delete(String string) {
-        this.repository.deleteById(string);
-        return true;
-    }
     @Override
     public List<Individual> getAll() {
         return this.repository.findAll();

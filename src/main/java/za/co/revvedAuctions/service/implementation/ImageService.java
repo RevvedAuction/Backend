@@ -1,4 +1,4 @@
-package za.co.revvedAuctions.service;
+package za.co.revvedAuctions.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class ImageService {
             Optional<Car> optionalCar = repository.findById(carVIN);
 
             if (optionalCar.isEmpty()) {
-                return "❌ Car with VIN " + carVIN + " not found!";
+                return "Car with VIN " + carVIN + " not found!";
             }
 
             Car existingCar = optionalCar.get();
@@ -34,10 +34,10 @@ public class ImageService {
 
             repository.save(updatedCar);
 
-            return "✅ Image uploaded successfully for VIN: " + carVIN;
+            return "Image uploaded successfully for VIN: " + carVIN;
 
         } catch (IOException e) {
-            throw new RuntimeException("❌ Failed to upload image", e);
+            throw new RuntimeException("Failed to upload image", e);
         }
     }
 
@@ -45,13 +45,13 @@ public class ImageService {
         Optional<Car> optionalCar = repository.findById(carVIN);
 
         if (optionalCar.isEmpty()) {
-            throw new RuntimeException("❌ Car with VIN " + carVIN + " not found!");
+            throw new RuntimeException("Car with VIN " + carVIN + " not found!");
         }
 
         Car car = optionalCar.get();
 
         if (car.getMedia() == null || car.getMedia().length == 0) {
-            throw new RuntimeException("❌ No image found for VIN: " + carVIN);
+            throw new RuntimeException("No image found for VIN: " + carVIN);
         }
 
         // Decompress and return the image

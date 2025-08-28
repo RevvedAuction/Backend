@@ -1,10 +1,9 @@
 package za.co.revvedAuctions.service;
 
 import za.co.revvedAuctions.domain.User;
-import za.co.revvedAuctions.repository.IRepository;
 
 import java.util.List;
 
-public interface IUserService extends IRepository<User, Integer> {
+public interface IUserService extends IService<User, String> {
     List<User> getAll();
 }

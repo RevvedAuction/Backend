@@ -1,46 +1,42 @@
-package za.co.revvedAuctions.service;
+package za.co.revvedAuctions.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Admin;
 import za.co.revvedAuctions.repository.AdminRepository;
+import za.co.revvedAuctions.service.IAdminService;
 
 import java.util.List;
 
 @Service
 public class AdminService implements IAdminService {
 
-    private static AdminService service;
-
-    @Autowired
     private AdminRepository repository;
 
-    public static IAdminService getService() {
-        if (service == null) {
-            service = new AdminService();
-        }
-        return service;
+    public AdminService(AdminRepository repository){
+        this.repository = repository;
     }
 
     @Override
     public Admin create(Admin admin) {
-        return this.repository.save(admin);
+        return repository.save(admin);
     }
 
     @Override
-    public Admin read(String string) {
-        return this.repository.findById(string).orElse(null);
+    public Admin read(Long aLong) {
+        return null;
     }
 
     @Override
     public Admin update(Admin admin) {
-        return this.repository.save(admin);
+        return repository.save(admin);
     }
 
     @Override
-    public boolean delete(String string) {
-        this.repository.deleteById(string);
-        return true;
+    public Admin delete(long id) {
+        Admin toDelete = read(id);
+        repository.delete(toDelete);
+        return toDelete;
     }
 
     @Override

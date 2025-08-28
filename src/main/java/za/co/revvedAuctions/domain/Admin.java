@@ -6,10 +6,9 @@ Date: 11 May 2025
 */
 package za.co.revvedAuctions.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+import za.co.revvedAuctions.util.Helper;
+
 import java.time.LocalDate;
 
 @Entity
@@ -17,16 +16,20 @@ public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long adminId;
-    private String adminId;
+    private Long adminId;;
+    @Column(name = "fullname", unique = true, nullable = false)
     private String fullName;
-
     @Column(name = "email", unique = true, nullable = false)
     private String email;
+    @Column(name = "password", unique = true, nullable = false)
     private String password;
+    @Column(name = "phonenumber", unique = true, nullable = false)
     private String phoneNumber;
+    @Column(name = "role", unique = true, nullable = false)
     private String role; // e.g., "System Admin", "Moderator"
+    @Column(name = "in_active", unique = true, nullable = false)
     private boolean isActive;
+    @Column(name = "date_created", unique = true, nullable = false)
     private LocalDate dateCreated;
 
     protected Admin() {
@@ -78,24 +81,14 @@ public class Admin {
         private boolean isActive;
         private LocalDate dateCreated;
 
-        public Builder setAdminId(Long adminId) { this.adminId = adminId; return this; }
-        public Builder setFullName(String fullName) { this.fullName = fullName; return this; }
-        public Builder setEmail(String email) { this.email = email; return this; }
-        public Builder setPassword(String password) { this.password = password; return this; }
-        public Builder setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; return this; }
-        public Builder setRole(String role) { this.role = role; return this; }
-        public Builder setActive(boolean isActive) { this.isActive = isActive; return this; }
-        public Builder setDateCreated(LocalDate dateCreated) { this.dateCreated = dateCreated; return this; }
-        public Builder setAdminId(String adminId) {
+        public Builder setAdminId(Long adminId) {
             this.adminId = adminId;
             return this;
         }
-
         public Builder setFullName(String fullName) {
             this.fullName = fullName;
             return this;
         }
-
         public Builder setEmail(String email) {
             if (!Helper.isValidEmail(email)) {
                 throw new IllegalArgumentException("Invalid email format: " + email);

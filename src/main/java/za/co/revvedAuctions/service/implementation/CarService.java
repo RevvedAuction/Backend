@@ -1,5 +1,6 @@
-package za.co.revvedAuctions.service;
+package za.co.revvedAuctions.service.implementation;
 
+import org.apache.el.stream.Optional;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Car;
 import za.co.revvedAuctions.repository.CarRepository;
@@ -16,9 +17,9 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public List<Car> getActiveAuctions() {
-        return carRepository.findByAuctionEndTimeAfter(LocalDateTime.now());
-    }
+//    public Optional<Car> getActiveAuctions() {
+//        return carRepository.findByAuctionEndTimeAfter(LocalDateTime.now());
+//    }
 
     public Car saveCar(Car car) {
         return carRepository.save(car);

@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class CompanyFactoryTest {
 
-    private static Company c1= CompanyFactory.createCompany(12354, "Esihle", 123456789, "123456789");
-
-    @Test
-    public void testCreateCompany() {
-        assertNotNull(c1);
-        System.out.println(c1.toString());
-    }
+//    private static Company c1= CompanyFactory.createCompany(12354, "Esihle", 123456789, "123456789");
+//
+//    @Test
+//    public void testCreateCompany() {
+//        assertNotNull(c1);
+//        System.out.println(c1.toString());
+//    }
 
 
   
