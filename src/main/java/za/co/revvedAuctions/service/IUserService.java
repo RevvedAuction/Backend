@@ -1,11 +1,10 @@
 package za.co.revvedAuctions.service;
 
 import za.co.revvedAuctions.domain.User;
-import za.co.revvedAuctions.repository.IRepository;
 
 import java.util.List;
 
-public interface IUserService extends IService<User, Long> {
-
+public interface IUserService extends IService<User, String> {
+    User delete(String userId);
     List<User> getAll();
 }

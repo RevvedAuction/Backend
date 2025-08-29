@@ -9,6 +9,7 @@ import java.util.UUID;
 
 public class AdminFactory {
     public static Admin createAdmin(
+            long adminId,
             String fullName,
             String email,
             String password,
@@ -29,10 +30,8 @@ public class AdminFactory {
             throw new IllegalArgumentException("password cannot be null or empty");
         }
 
-        String adminId = UUID.randomUUID().toString();
-
         return new Admin.Builder()
-//                .setAdminId(adminId)
+                .setAdminId(adminId)
                 .setFullName(fullName)
                 .setEmail(email)
                 .setPassword(password)

@@ -147,7 +147,7 @@ public class Car {
             return this;
         }
 
-        public Builder setMediaBase64(byte[] media) {  // ✅ fixed type
+        public Builder setMediaBase64(byte[] media) {
             this.media = media;
             return this;
         }
@@ -164,7 +164,7 @@ public class Car {
             this.carYear = car.getCarYear();
             this.carMileage = car.getCarMileage();
             this.carStatus = car.getCarStatus();
-            this.media = car.getMedia();  // ✅ now consistent
+            this.media = car.getMedia();
             this.auctionEndTime = car.getAuctionEndTime();
             return this;
         }
