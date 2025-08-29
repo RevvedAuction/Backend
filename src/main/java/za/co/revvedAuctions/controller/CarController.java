@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import za.co.revvedAuctions.domain.Car;
-import za.co.revvedAuctions.service.implementation.CarService;
+import za.co.revvedAuctions.service.CarService;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -98,14 +98,14 @@ public class CarController {
     }
 
     // Get all active auctions
-//    @GetMapping("/active")
-//    public ResponseEntity<List<CarDTO>> getActiveAuctions() {
-//        List<CarDTO> carDTOs = carService.getActiveAuctions()
-//                .stream()
-//                .map(this::mapToDTO)
-//                .collect(Collectors.toList());
-//        return ResponseEntity.ok(carDTOs);
-//    }
+    @GetMapping("/active")
+    public ResponseEntity<List<CarDTO>> getActiveAuctions() {
+        List<CarDTO> carDTOs = carService.getActiveAuctions()
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(carDTOs);
+    }
 
     // Update car details
     @PutMapping("/{vin}")

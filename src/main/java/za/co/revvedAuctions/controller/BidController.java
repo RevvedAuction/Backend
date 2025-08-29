@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.revvedAuctions.domain.Bid;
-import za.co.revvedAuctions.service.implementation.BidService;
+import za.co.revvedAuctions.service.BidService;
 
 import java.util.List;
 
@@ -34,6 +34,12 @@ public class BidController {
     public ResponseEntity<Bid> update(@PathVariable Integer id, @RequestBody Bid bid) {
         Bid updatedBid = bidService.update(bid);
         return ResponseEntity.ok(updatedBid);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        bidService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/getAll")

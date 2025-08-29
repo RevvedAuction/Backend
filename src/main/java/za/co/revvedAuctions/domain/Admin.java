@@ -16,26 +16,23 @@ public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long adminId;;
-    @Column(name = "fullname", unique = true, nullable = false)
+    private Long adminId;
+
     private String fullName;
+
     @Column(name = "email", unique = true, nullable = false)
     private String email;
-    @Column(name = "password", unique = true, nullable = false)
+
     private String password;
-    @Column(name = "phonenumber", unique = true, nullable = false)
     private String phoneNumber;
-    @Column(name = "role", unique = true, nullable = false)
     private String role; // e.g., "System Admin", "Moderator"
-    @Column(name = "in_active", unique = true, nullable = false)
     private boolean isActive;
-    @Column(name = "date_created", unique = true, nullable = false)
     private LocalDate dateCreated;
 
-    protected Admin() {
-    }
+    // JPA requires a default constructor
+    protected Admin() {}
 
-    protected Admin(Builder builder) {
+    private Admin(Builder builder) {
         this.adminId = builder.adminId;
         this.fullName = builder.fullName;
         this.email = builder.email;
@@ -85,10 +82,12 @@ public class Admin {
             this.adminId = adminId;
             return this;
         }
+
         public Builder setFullName(String fullName) {
             this.fullName = fullName;
             return this;
         }
+
         public Builder setEmail(String email) {
             if (!Helper.isValidEmail(email)) {
                 throw new IllegalArgumentException("Invalid email format: " + email);
@@ -134,6 +133,8 @@ public class Admin {
             return this;
         }
 
-        public Admin build() { return new Admin(this); }
+        public Admin build() {
+            return new Admin(this);
+        }
     }
 }
