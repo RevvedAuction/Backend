@@ -5,8 +5,6 @@ import org.apache.commons.validator.routines.EmailValidator;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.UUID;
-import java.util.regex.Pattern;
 
 public class Helper {
 
@@ -26,13 +24,10 @@ public class Helper {
         return false;
     }
 
-    public static String generateId() {
-        return UUID.randomUUID().toString();
+    public static boolean isValidEmail(String email){
+        EmailValidator validator =EmailValidator.getInstance();
+        return validator.isValid(email);
     }
 
-    public static boolean isValidEmail(String email) {
-        String regexPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        return Pattern.compile(regexPattern).matcher(email).matches();
-    }
 
 }

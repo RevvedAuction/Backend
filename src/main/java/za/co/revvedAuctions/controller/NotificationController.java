@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.revvedAuctions.domain.Notification;
-import za.co.revvedAuctions.service.NotificationService;
+import za.co.revvedAuctions.service.implementation.NotificationService;
 
 import java.util.List;
 
@@ -23,13 +23,13 @@ public class NotificationController {
 
     @PostMapping("/add")
     public ResponseEntity<Notification> createNotification(@RequestBody Notification notification) {
-        Notification savedNotification = notificationService.saveNotification(notification);
+        Notification savedNotification = notificationService.create(notification);
         return new ResponseEntity<>(savedNotification, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Notification> getNotificationByID(@PathVariable("id") int id) {
-        Notification notification = notificationService.getNotificationByID(id);
+        Notification notification = notificationService.read(id);
         if (notification != null) {
             return ResponseEntity.ok(notification);
         } else {
@@ -39,12 +39,12 @@ public class NotificationController {
 
     @GetMapping
     public ResponseEntity<List<Notification>> getAllNotifications() {
-        return ResponseEntity.ok(notificationService.getAllNotifications());
+        return ResponseEntity.ok(notificationService.getAll());
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Notification> updateNotification(@PathVariable("id") int id, @RequestBody Notification updatedNotification) {
-        Notification existingNotification = notificationService.getNotificationByID(id);
+        Notification existingNotification = notificationService.read(id);
 
         if (existingNotification != null) {
             Notification notificationToUpdate = new Notification.Builder()
@@ -55,20 +55,11 @@ public class NotificationController {
                     .setRead(updatedNotification.isRead())
                     .build();
 
-            Notification savedNotification = notificationService.saveNotification(notificationToUpdate);
+            Notification savedNotification = notificationService.update(notificationToUpdate);
             return ResponseEntity.ok(savedNotification);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteNotification(@PathVariable("id") int id) {
-        Notification notification = notificationService.getNotificationByID(id);
-        if (notification == null) {
-            return ResponseEntity.notFound().build();
-        }
-        notificationService.deleteNotification(id);
-        return ResponseEntity.noContent().build();
-    }
 }
