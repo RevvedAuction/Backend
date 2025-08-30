@@ -9,7 +9,7 @@ import za.co.revvedAuctions.service.implementation.BidService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bids")
+@RequestMapping("api/bids")
 public class BidController {
 
     private final BidService bidService;

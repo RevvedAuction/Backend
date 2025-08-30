@@ -10,13 +10,14 @@ import jakarta.persistence.*;
 import za.co.revvedAuctions.util.Helper;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 public class Admin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long adminId;;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID adminId;
     @Column(name = "fullname", unique = true, nullable = false)
     private String fullName;
     @Column(name = "email", unique = true, nullable = false)
@@ -47,7 +48,7 @@ public class Admin {
     }
 
     // Getters
-    public Long getAdminId() { return adminId; }
+    public UUID AdminId() { return adminId; }
     public String getFullName() { return fullName; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
@@ -72,7 +73,7 @@ public class Admin {
 
     // Builder
     public static class Builder {
-        private Long adminId;
+        private UUID adminId;
         private String fullName;
         private String email;
         private String password;
@@ -81,7 +82,7 @@ public class Admin {
         private boolean isActive;
         private LocalDate dateCreated;
 
-        public Builder setAdminId(Long adminId) {
+        public Builder setAdminId(UUID adminId) {
             this.adminId = adminId;
             return this;
         }
