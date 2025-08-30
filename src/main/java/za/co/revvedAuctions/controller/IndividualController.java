@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/individuals")
+@RequestMapping("/api/individual")
 @CrossOrigin(origins = "http://localhost:8081")
 public class IndividualController {
 

@@ -6,6 +6,6 @@ import za.co.revvedAuctions.domain.Individual;
 import java.util.List;
 
 public interface IIndividualRepository extends JpaRepository<Individual, Integer> {
-    List<Individual> findByIndividualId(String auctionSessionId);
+    List<Individual> findByIndividualId(Integer individualId);
 }
 

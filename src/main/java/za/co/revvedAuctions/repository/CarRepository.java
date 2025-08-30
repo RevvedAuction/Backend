@@ -11,11 +11,5 @@ public interface CarRepository extends JpaRepository<Car, String> {
     List<Car> findByAuctionEndTimeAfter(LocalDateTime now);
 }
 
-import za.co.revvedAuctions.domain.Car;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class CarRepository {
-
-}
