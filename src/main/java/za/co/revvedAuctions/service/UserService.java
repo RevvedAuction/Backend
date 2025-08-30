@@ -1,9 +1,7 @@
 package za.co.revvedAuctions.service;
 
-import za.co.revvedAuctions.domain.Individual;
 import za.co.revvedAuctions.domain.User;
 import za.co.revvedAuctions.repository.IUserRepository;
-import za.co.revvedAuctions.repository.IndividualRepository;
 import za.co.revvedAuctions.repository.UserRepository;
 
 import java.util.List;
