@@ -4,7 +4,7 @@ import za.co.revvedAuctions.domain.User;
 
 import java.util.List;
 
-public interface IUserService extends IService<User, String> {
-    User delete(String userId);
+public interface IUserService extends IService<User, Long> {
+
     List<User> getAll();
 }
