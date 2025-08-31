@@ -33,9 +33,13 @@ public class AdminService implements IAdminService {
         return repository.save(admin);
     }
 
+    public Admin findAdmin(int adminNumber) {
+        return repository.findAdminByAdminNumber(adminNumber);
+    }
+
     @Override
-    public Admin delete(UUID id) {
-        Admin toDelete = read(id);
+    public Admin delete(int adminNumber) {
+        Admin toDelete = findAdmin(adminNumber);
         repository.delete(toDelete);
         return toDelete;
     }
