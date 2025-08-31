@@ -28,10 +28,6 @@ public class Admin {
     private String password;
     @Column(name = "phonenumber", unique = true, nullable = false)
     private String phoneNumber;
-    @Column(name = "role", nullable = false)
-    private String role; // e.g., "System Admin", "Moderator"
-    @Column(name = "in_active", nullable = false)
-    private boolean isActive;
     @Column(name = "date_created", nullable = false)
     private LocalDate dateCreated;
 
@@ -45,8 +41,6 @@ public class Admin {
         this.email = builder.email;
         this.password = builder.password;
         this.phoneNumber = builder.phoneNumber;
-        this.role = builder.role;
-        this.isActive = builder.isActive;
         this.dateCreated = builder.dateCreated;
     }
 
@@ -57,8 +51,6 @@ public class Admin {
     public String getEmail() { return email; }
     public String getPassword() { return password; }
     public String getPhoneNumber() { return phoneNumber; }
-    public String getRole() { return role; }
-    public boolean isActive() { return isActive; }
     public LocalDate getDateCreated() { return dateCreated; }
 
     @Override
@@ -70,8 +62,6 @@ public class Admin {
                 ", email='" + email + '\'' +
                 ", password='***'" + // Masked password
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", role='" + role + '\'' +
-                ", isActive=" + isActive +
                 ", dateCreated=" + dateCreated +
                 '}';
     }
@@ -84,8 +74,6 @@ public class Admin {
         private String email;
         private String password;
         private String phoneNumber;
-        private String role;
-        private boolean isActive;
         private LocalDate dateCreated;
 
         public Builder setAdminNumber(int adminNumber) {
@@ -114,16 +102,6 @@ public class Admin {
             return this;
         }
 
-        public Builder setRole(String role) {
-            this.role = role;
-            return this;
-        }
-
-        public Builder setActive(boolean isActive) {
-            this.isActive = isActive;
-            return this;
-        }
-
         public Builder setDateCreated(LocalDate dateCreated) {
             this.dateCreated = dateCreated;
             return this;
@@ -136,8 +114,6 @@ public class Admin {
             this.email = admin.email;
             this.password = admin.password;
             this.phoneNumber = admin.phoneNumber;
-            this.role = admin.role;
-            this.isActive = admin.isActive;
             this.dateCreated = admin.dateCreated;
             return this;
         }
