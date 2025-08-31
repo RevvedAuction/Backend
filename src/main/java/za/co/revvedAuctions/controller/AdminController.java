@@ -35,8 +35,8 @@ public class AdminController {
         return adminService.update(admin);
     }
 
-    @DeleteMapping("/delete/{adminId}")
-    public Admin deleteAdmin(@PathVariable UUID adminId){ return adminService.delete(adminId);}
+    @DeleteMapping("/delete/{adminNumber}")
+    public Admin deleteAdmin(@PathVariable int adminNumber){ return adminService.delete(adminNumber);}
 
     @GetMapping("/getall")
     public List<Admin> getAllAdmins(){ return adminService.getAll(); }
