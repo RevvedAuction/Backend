@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AuctionHistoryRepository extends JpaRepository<AuctionHistory, Integer> {
-    List<AuctionHistory> findByAuctionSessionId(String auctionSessionId);
+    List<AuctionHistory> findAuctionHistoryByHistoryId(Integer historyId);
 }
