@@ -1,5 +1,6 @@
 package za.co.revvedAuctions.service.implementation;
 
+import org.junit.jupiter.api.Disabled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Individual;
@@ -23,13 +24,19 @@ public class IndividualService implements IIndividualService {
     }
 
     @Override
-    public Individual read(String id) {
-        return this.repository.findById(id).orElse(null);
+    public Individual read(Integer individualId) {
+        return this.repository.findById(individualId).orElse(null);
     }
 
     @Override
     public Individual update(Individual individual) {
         return this.repository.save(individual);
+    }
+
+    @Disabled
+    @Override
+    public Individual delete(Integer integer) {
+        return null;
     }
 
     @Override

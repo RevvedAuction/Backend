@@ -2,8 +2,8 @@ package za.co.revvedAuctions.factory;
 
 /*
 Company.java
-Author: Esihle Mlinjana
-Student Number: 222441712
+Author: LIAM MATTHEWS
+Student Number: 221818340
 Date: 18 May 2025
  */
 
