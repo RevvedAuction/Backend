@@ -21,9 +21,15 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults()) // enable CORS
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/user/register").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/user/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/cars/add").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/cars/{vin}").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/cars/{vin}").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/cars/delete/{vin}").permitAll()
+                        .anyRequest().permitAll()
                 )
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer::disable);
+
 
         return http.build();
     }
@@ -34,7 +40,6 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:8080") // frontend URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
