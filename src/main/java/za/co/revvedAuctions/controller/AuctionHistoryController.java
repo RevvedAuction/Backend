@@ -9,7 +9,7 @@ import za.co.revvedAuctions.service.IAuctionHistoryService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/auctionHistory")
+@RequestMapping("/auctionHistory")
 public class AuctionHistoryController {
 
     private final IAuctionHistoryService service;
