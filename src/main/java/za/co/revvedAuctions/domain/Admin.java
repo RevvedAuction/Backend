@@ -10,26 +10,25 @@ import jakarta.persistence.*;
 import za.co.revvedAuctions.util.Helper;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 public class Admin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long adminId;;
-    @Column(name = "fullname", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID adminId;
+    @Column(name = "fullname", nullable = false)
     private String fullName;
+    @Column(name = "admin_Number", unique = true, nullable = false)
+    private int adminNumber;
     @Column(name = "email", unique = true, nullable = false)
     private String email;
     @Column(name = "password", unique = true, nullable = false)
     private String password;
     @Column(name = "phonenumber", unique = true, nullable = false)
     private String phoneNumber;
-    @Column(name = "role", unique = true, nullable = false)
-    private String role; // e.g., "System Admin", "Moderator"
-    @Column(name = "in_active", unique = true, nullable = false)
-    private boolean isActive;
-    @Column(name = "date_created", unique = true, nullable = false)
+    @Column(name = "date_created", nullable = false)
     private LocalDate dateCreated;
 
     protected Admin() {
@@ -37,52 +36,48 @@ public class Admin {
 
     protected Admin(Builder builder) {
         this.adminId = builder.adminId;
+        this.adminNumber = builder.adminNumber;
         this.fullName = builder.fullName;
         this.email = builder.email;
         this.password = builder.password;
         this.phoneNumber = builder.phoneNumber;
-        this.role = builder.role;
-        this.isActive = builder.isActive;
         this.dateCreated = builder.dateCreated;
     }
 
     // Getters
-    public Long getAdminId() { return adminId; }
+    public UUID AdminId() { return adminId; }
+    public int adminNumber() {return adminNumber; }
     public String getFullName() { return fullName; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
     public String getPhoneNumber() { return phoneNumber; }
-    public String getRole() { return role; }
-    public boolean isActive() { return isActive; }
     public LocalDate getDateCreated() { return dateCreated; }
 
     @Override
     public String toString() {
         return "Admin{" +
                 "adminId=" + adminId +
+                ", adminNumber='" + adminNumber + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='***'" + // Masked password
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", role='" + role + '\'' +
-                ", isActive=" + isActive +
                 ", dateCreated=" + dateCreated +
                 '}';
     }
 
     // Builder
     public static class Builder {
-        private Long adminId;
+        private UUID adminId;
+        private int adminNumber;
         private String fullName;
         private String email;
         private String password;
         private String phoneNumber;
-        private String role;
-        private boolean isActive;
         private LocalDate dateCreated;
 
-        public Builder setAdminId(Long adminId) {
-            this.adminId = adminId;
+        public Builder setAdminNumber(int adminNumber) {
+            this.adminNumber = adminNumber;
             return this;
         }
         public Builder setFullName(String fullName) {
@@ -107,16 +102,6 @@ public class Admin {
             return this;
         }
 
-        public Builder setRole(String role) {
-            this.role = role;
-            return this;
-        }
-
-        public Builder setActive(boolean isActive) {
-            this.isActive = isActive;
-            return this;
-        }
-
         public Builder setDateCreated(LocalDate dateCreated) {
             this.dateCreated = dateCreated;
             return this;
@@ -124,12 +109,11 @@ public class Admin {
 
         public Builder copy(Admin admin) {
             this.adminId = admin.adminId;
+            this.adminNumber = admin.adminNumber;
             this.fullName = admin.fullName;
             this.email = admin.email;
             this.password = admin.password;
             this.phoneNumber = admin.phoneNumber;
-            this.role = admin.role;
-            this.isActive = admin.isActive;
             this.dateCreated = admin.dateCreated;
             return this;
         }

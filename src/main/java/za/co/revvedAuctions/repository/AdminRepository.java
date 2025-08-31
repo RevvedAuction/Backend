@@ -4,7 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.co.revvedAuctions.domain.Admin;
 
-@Repository
-public interface AdminRepository extends JpaRepository<Admin, Long> {
+import java.util.UUID;
 
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, UUID> {
+
+    Admin findAdminByAdminNumber(int adminNumber);
 }

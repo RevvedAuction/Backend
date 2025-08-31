@@ -7,6 +7,7 @@ import za.co.revvedAuctions.repository.AdminRepository;
 import za.co.revvedAuctions.service.IAdminService;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AdminService implements IAdminService {
@@ -23,8 +24,8 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public Admin read(Long aLong) {
-        return null;
+    public Admin read(UUID adminId) {
+        return repository.findById(adminId).orElseThrow();
     }
 
     @Override
@@ -32,9 +33,13 @@ public class AdminService implements IAdminService {
         return repository.save(admin);
     }
 
+    public Admin findAdmin(int adminNumber) {
+        return repository.findAdminByAdminNumber(adminNumber);
+    }
+
     @Override
-    public Admin delete(long id) {
-        Admin toDelete = read(id);
+    public Admin delete(int adminNumber) {
+        Admin toDelete = findAdmin(adminNumber);
         repository.delete(toDelete);
         return toDelete;
     }
