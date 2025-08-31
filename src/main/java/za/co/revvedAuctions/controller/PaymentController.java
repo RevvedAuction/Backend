@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/payments")
-//@CrossOrigin(origins = "http://localhost:8082")
+@CrossOrigin(origins = "http://localhost:8082")
 public class PaymentController {
 
     private final PaymentService paymentService;
