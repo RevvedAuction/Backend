@@ -19,10 +19,6 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-//    @PostMapping("/create")
-//    public Admin createAdmin(@RequestBody Admin admin) {
-//        return adminService.create(admin);
-//    }
     @PostMapping("/create")
     public ResponseEntity<Admin> createAdmin(@RequestBody Admin admin) {
         Admin saved = adminService.create(admin);
@@ -39,8 +35,8 @@ public class AdminController {
         return adminService.update(admin);
     }
 
-    @DeleteMapping("/delete/{adminId}")
-    public Admin deleteAdmin(@PathVariable UUID adminId){ return adminService.delete(adminId);}
+    @DeleteMapping("/delete/{adminNumber}")
+    public Admin deleteAdmin(@PathVariable int adminNumber){ return adminService.delete(adminNumber);}
 
     @GetMapping("/getall")
     public List<Admin> getAllAdmins(){ return adminService.getAll(); }

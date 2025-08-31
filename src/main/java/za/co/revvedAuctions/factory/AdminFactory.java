@@ -9,6 +9,7 @@ import java.util.UUID;
 
 public class AdminFactory {
     public static Admin createAdmin(
+            int adminNumber,
             String fullName,
             String email,
             String password,
@@ -30,6 +31,7 @@ public class AdminFactory {
         }
 
         return new Admin.Builder()
+                .setAdminNumber(adminNumber)
                 .setFullName(fullName)
                 .setEmail(email)
                 .setPassword(password)
