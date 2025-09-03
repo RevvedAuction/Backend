@@ -18,32 +18,6 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID adminId;
-    private String fullName;
-    private int adminNumber;
-    private String email;
-    private String password;
-    private String phoneNumber;
-    private LocalDate dateCreated;
-
-    protected Admin() {
-    }
-
-    protected Admin(Builder builder) {
-        this.adminNumber = builder.adminNumber;
-        this.fullName = builder.fullName;
-        this.email = builder.email;
-        this.password = builder.password;
-        this.phoneNumber = builder.phoneNumber;
-        this.dateCreated = builder.dateCreated;
-    }
-
-    // Getters
-    public UUID getAdminId() { return adminId; }
-    public int getAdminNumber() {return adminNumber; }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID adminId;
     @Column(name = "fullname", nullable = false)
     private String fullName;
     @Column(name = "admin_Number", unique = true, nullable = false)
@@ -105,11 +79,6 @@ public class Admin {
         public Builder setAdminNumber(int adminNumber) {
             this.adminNumber = adminNumber;
             return this;
-        }
-        public Builder setFullName(String fullName) {
-            this.fullName = fullName;
-            return this;
-        }
         }
         public Builder setFullName(String fullName) {
             this.fullName = fullName;
