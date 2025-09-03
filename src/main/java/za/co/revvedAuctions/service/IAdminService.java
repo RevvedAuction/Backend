@@ -5,6 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface IAdminService extends IService<Admin, UUID> {
-    Admin delete (int adminNumber);
+    Admin delete (UUID id);
     List<Admin> getAll();
 }
