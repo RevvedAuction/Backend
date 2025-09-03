@@ -13,7 +13,7 @@ import java.util.UUID;
 public class AdminService implements IAdminService {
 
     private AdminRepository repository;
-
+    @Autowired
     public AdminService(AdminRepository repository){
         this.repository = repository;
     }
