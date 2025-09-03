@@ -30,13 +30,18 @@ public class AdminController {
         return adminService.read(UUID.fromString(adminId));
     }
 
+    @GetMapping("/findAdminNumber/{adminNumber}")
+    public Admin readAdminNumber(@PathVariable int adminNumber){
+        return adminService.findAdmin(adminNumber);
+    }
+
     @PutMapping("/update")
     public Admin updateAdmin(@RequestBody Admin admin){
         return adminService.update(admin);
     }
 
-    @DeleteMapping("/delete/{adminId}")
-    public Admin deleteAdmin(@PathVariable UUID adminId){ return adminService.delete(adminId);}
+    @DeleteMapping("/delete/{adminNumber}")
+    public Admin deleteAdmin(@PathVariable int adminNumber){ return adminService.delete(adminNumber);}
 
     @GetMapping("/getall")
     public List<Admin> getAllAdmins(){ return adminService.getAll(); }
