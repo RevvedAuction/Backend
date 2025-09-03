@@ -40,6 +40,39 @@ public class Admin {
     // Getters
     public UUID getAdminId() { return adminId; }
     public int getAdminNumber() {return adminNumber; }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID adminId;
+    @Column(name = "fullname", nullable = false)
+    private String fullName;
+    @Column(name = "admin_Number", unique = true, nullable = false)
+    private int adminNumber;
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
+    @Column(name = "password", unique = true, nullable = false)
+    private String password;
+    @Column(name = "phonenumber", unique = true, nullable = false)
+    private String phoneNumber;
+    @Column(name = "date_created", nullable = false)
+    private LocalDate dateCreated;
+
+    protected Admin() {
+    }
+
+    protected Admin(Builder builder) {
+        this.adminId = builder.adminId;
+        this.adminNumber = builder.adminNumber;
+        this.fullName = builder.fullName;
+        this.email = builder.email;
+        this.password = builder.password;
+        this.phoneNumber = builder.phoneNumber;
+        this.dateCreated = builder.dateCreated;
+    }
+
+    // Getters
+    public UUID AdminId() { return adminId; }
+    public int adminNumber() {return adminNumber; }
     public String getFullName() { return fullName; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
@@ -49,6 +82,7 @@ public class Admin {
     @Override
     public String toString() {
         return "Admin{" +
+                "adminId=" + adminId +
                 ", adminNumber='" + adminNumber + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
@@ -60,6 +94,7 @@ public class Admin {
 
     // Builder
     public static class Builder {
+        private UUID adminId;
         private int adminNumber;
         private String fullName;
         private String email;
@@ -70,6 +105,11 @@ public class Admin {
         public Builder setAdminNumber(int adminNumber) {
             this.adminNumber = adminNumber;
             return this;
+        }
+        public Builder setFullName(String fullName) {
+            this.fullName = fullName;
+            return this;
+        }
         }
         public Builder setFullName(String fullName) {
             this.fullName = fullName;
@@ -99,6 +139,7 @@ public class Admin {
         }
 
         public Builder copy(Admin admin) {
+            this.adminId = admin.adminId;
             this.adminNumber = admin.adminNumber;
             this.fullName = admin.fullName;
             this.email = admin.email;
