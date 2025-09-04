@@ -9,12 +9,11 @@ import java.util.UUID;
 
 public class AdminFactory {
     public static Admin createAdmin(
+            int adminNumber,
             String fullName,
             String email,
             String password,
-            String phoneNumber,
-            String role,
-            boolean isActive
+            String phoneNumber
     ) {
         if (Helper.isNullOrEmpty(fullName)) {
             throw new IllegalArgumentException("fullName cannot be null or empty");
@@ -30,12 +29,11 @@ public class AdminFactory {
         }
 
         return new Admin.Builder()
+                .setAdminNumber(adminNumber)
                 .setFullName(fullName)
                 .setEmail(email)
                 .setPassword(password)
                 .setPhoneNumber(phoneNumber)
-                .setRole(role)
-                .setActive(isActive)
                 .setDateCreated(LocalDate.now())
                 .build();
     }
