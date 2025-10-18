@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 import za.co.revvedAuctions.domain.User;
 
+import java.lang.ScopedValue;
 import java.util.Optional;
 
 @EnableJpaRepositories
@@ -12,4 +13,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUserEmail(String userEmail);
     Optional<User> findByUserEmailAndUserPassword(String userEmail, String userPassword);
+
 }
