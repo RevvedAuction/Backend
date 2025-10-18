@@ -9,10 +9,10 @@ public class CarDTO {
     private int carYear;
     private int carMileage;
     private String carStatus;
-    private String mediaBase64; // Base64 string for image
+    private String mediaBase64;
     private LocalDateTime auctionEndTime;
+    private Double currentBid;
 
-    // Getters & Setters
     public String getCarVIN() { return carVIN; }
     public void setCarVIN(String carVIN) { this.carVIN = carVIN; }
     public String getCarMake() { return carMake; }
@@ -29,4 +29,6 @@ public class CarDTO {
     public void setMediaBase64(String mediaBase64) { this.mediaBase64 = mediaBase64; }
     public LocalDateTime getAuctionEndTime() { return auctionEndTime; }
     public void setAuctionEndTime(LocalDateTime auctionEndTime) { this.auctionEndTime = auctionEndTime; }
+    public Double getCurrentBid() { return currentBid; }
+    public void setCurrentBid(Double currentBid) { this.currentBid = currentBid; }
 }

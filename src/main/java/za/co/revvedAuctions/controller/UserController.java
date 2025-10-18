@@ -33,7 +33,6 @@ public class UserController {
         );
     }
 
-    // Register new user
     @PostMapping("/register")
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
         User user = new User.Builder()

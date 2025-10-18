@@ -30,7 +30,6 @@ public class Admin {
         this.dateCreated = builder.dateCreated;
     }
 
-    // Getters
     public UUID getAdminId() { return adminId; }
     public int getAdminNumber() {return adminNumber; }
     public String getFullName() { return fullName; }

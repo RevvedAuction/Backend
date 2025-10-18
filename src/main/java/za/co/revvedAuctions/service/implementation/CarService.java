@@ -1,11 +1,9 @@
 package za.co.revvedAuctions.service.implementation;
 
-import org.apache.el.stream.Optional;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.Car;
 import za.co.revvedAuctions.repository.CarRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service

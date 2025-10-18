@@ -37,9 +37,6 @@ public class Car {
     @Column(name = "media", columnDefinition = "LONGBLOB")
     private byte[] media;
 
-    /**
-     * Returns the media as a Base64 string suitable for <img> in frontend.
-     */
     @Transient
     public String getMediaBase64() {
         if (media != null && media.length > 0) {
@@ -85,7 +82,7 @@ public class Car {
         return carStatus;
     }
 
-    public byte[] getMedia() {   // ✅ fixed type
+    public byte[] getMedia() {
         return media;
     }
 
@@ -102,7 +99,7 @@ public class Car {
                 ", carYear=" + carYear +
                 ", carMileage=" + carMileage +
                 ", carStatus='" + carStatus + '\'' +
-                ", media=" + Arrays.toString(media) +   // ✅ prevent [B@hashcode
+                ", media=" + Arrays.toString(media) +
                 ", auctionEndTime=" + auctionEndTime +
                 '}';
     }

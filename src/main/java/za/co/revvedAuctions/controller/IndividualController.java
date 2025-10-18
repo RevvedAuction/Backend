@@ -22,28 +22,24 @@ public class IndividualController {
         this.individualService = individualService;
     }
 
-    // Create a new Individual
     @PostMapping("/add")
     public ResponseEntity<Individual> createIndividual(@RequestBody Individual individual) {
         Individual saved = individualService.create(individual);
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
-    // Get a single Individual by ID
     @GetMapping("/{id}")
     public ResponseEntity<Individual> getIndividualById(@PathVariable String id) {
         Individual individual = individualService.read(id);
         return (individual != null) ? ResponseEntity.ok(individual) : ResponseEntity.notFound().build();
     }
 
-    // Get all Individuals
     @GetMapping
     public ResponseEntity<List<Individual>> getAllIndividuals() {
         List<Individual> individuals = individualService.getAll();
         return ResponseEntity.ok(individuals);
     }
 
-    // Update Individual
     @PutMapping("/{id}")
     public ResponseEntity<Individual> updateIndividual(@PathVariable String id, @RequestBody Individual updatedIndividual) {
         Individual existing = individualService.read(id);
