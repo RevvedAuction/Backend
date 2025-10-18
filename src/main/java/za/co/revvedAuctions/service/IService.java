@@ -8,5 +8,5 @@ public interface IService <T,ID>{
 
     T update (T t);
 
-    T delete (ID id);
+//    T delete (ID id);
 }

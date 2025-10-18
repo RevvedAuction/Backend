@@ -4,6 +4,6 @@ import za.co.revvedAuctions.domain.Individual;
 
 import java.util.List;
 
-public interface IIndividualService extends IService <Individual, Integer>{
+public interface IIndividualService extends IService <Individual, String>{
     List<Individual> getAll();
 }

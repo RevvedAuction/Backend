@@ -70,12 +70,12 @@ public class UserService implements IUserService {
         return repository.save(user);
     }
 
-    @Override
-    public User delete(Long userId) {
-        User toDelete = read(userId);
-        repository.delete(toDelete);
-        return toDelete;
-    }
+//    @Override
+//    public User delete(Long userId) {
+//        User toDelete = read(userId);
+//        repository.delete(toDelete);
+//        return toDelete;
+//    }
 
     @Override
     public List<User> getAll() {

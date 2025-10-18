@@ -1,7 +1,5 @@
 package za.co.revvedAuctions.service.implementation;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.revvedAuctions.domain.AuctionHistory;
@@ -32,15 +30,12 @@ public class AuctionHistoryService implements IAuctionHistoryService {
     }
 
     @Override
-    public AuctionHistory delete(Integer id) {
-        repository.deleteById(id);
-        return null;
-    }
-
-    @Override
     public List<AuctionHistory> getAll() {
         return repository.findAll();
     }
 
-
+    @Override
+    public List<AuctionHistory> getByAuctionSessionId(String auctionSessionId) {
+        return repository.findByAuctionSessionId(auctionSessionId);
+    }
 }

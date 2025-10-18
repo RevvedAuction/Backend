@@ -7,5 +7,5 @@ public interface IAuctionHistoryService extends IService<AuctionHistory, Integer
 
     List<AuctionHistory> getAll();
 
-
+    List<AuctionHistory> getByAuctionSessionId(String auctionSessionId);
 }
