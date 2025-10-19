@@ -1,43 +1,36 @@
 /*
 Individual.java
-Author: Liam Matthews
-Student Number: 221818340
-Date: 28 August 2025
+Author: Esihle Mlinjana
+Student Number: 222441712
+Date: 11 May 2025
 */
 package za.co.revvedAuctions.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "individual")
 public class Individual {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int individualId;
 
-    @Column(nullable = false)
     private String firstName;
-
-    @Column(nullable = false)
     private String lastName;
-
-    @Column(unique = true, nullable = false)
     private String emailAddress;
-
     private LocalDate dateOfBirth;
-
-    @Column(unique = true)
     private String identityNumber;
-
     private String phoneNumber;
-
     private String homeAddress;
 
-    protected Individual() {} // JPA requires protected or default constructor
+    public Individual() {
+    }
 
-    private Individual(Builder builder) {
+    public Individual(Builder builder) {
         this.individualId = builder.individualId;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -47,8 +40,6 @@ public class Individual {
         this.phoneNumber = builder.phoneNumber;
         this.homeAddress = builder.homeAddress;
     }
-
-    // Getters
     public int getIndividualId() { return individualId; }
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
@@ -66,13 +57,12 @@ public class Individual {
                 ", lastName='" + lastName + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", identityNumber='" + identityNumber + '\'' +
+                ", identityNumber=" + identityNumber +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", homeAddress='" + homeAddress + '\'' +
                 '}';
     }
 
-    // Builder class
     public static class Builder {
         private int individualId;
         private String firstName;
@@ -92,7 +82,7 @@ public class Individual {
         public Builder setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; return this; }
         public Builder setHomeAddress(String homeAddress) { this.homeAddress = homeAddress; return this; }
 
-        public Builder copy(Individual individual) {
+        public Builder copy(Individual individual){
             this.individualId = individual.individualId;
             this.firstName = individual.firstName;
             this.lastName = individual.lastName;
@@ -104,6 +94,6 @@ public class Individual {
             return this;
         }
 
-        public Individual build() { return new Individual(this); }
+        public Individual build(){ return new Individual(this); }
     }
 }
