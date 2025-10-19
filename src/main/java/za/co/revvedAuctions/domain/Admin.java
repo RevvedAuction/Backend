@@ -1,9 +1,3 @@
-/*
-Admin.java
-Admin Entity Class using Builder Pattern
-Author: Zintle Mgqongose 214280829
-Date: 11 May 2025
-*/
 package za.co.revvedAuctions.domain;
 
 import jakarta.persistence.*;
@@ -14,7 +8,6 @@ import java.util.UUID;
 
 @Entity
 public class Admin {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID adminId;
@@ -23,27 +16,7 @@ public class Admin {
     private String email;
     private String password;
     private String phoneNumber;
-    private LocalDate dateCreated;
 
-    protected Admin() {
-    }
-
-    protected Admin(Builder builder) {
-        this.adminNumber = builder.adminNumber;
-        this.fullName = builder.fullName;
-        this.email = builder.email;
-        this.password = builder.password;
-        this.phoneNumber = builder.phoneNumber;
-        this.dateCreated = builder.dateCreated;
-    }
-
-    // Getters
-    public UUID getAdminId() { return adminId; }
-    public int getAdminNumber() {return adminNumber; }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID adminId;
     @Column(name = "fullname", nullable = false)
     private String fullName;
     @Column(name = "admin_Number", unique = true, nullable = false)
@@ -61,6 +34,7 @@ public class Admin {
     }
 
     protected Admin(Builder builder) {
+
         this.adminId = builder.adminId;
         this.adminNumber = builder.adminNumber;
         this.fullName = builder.fullName;
@@ -69,6 +43,9 @@ public class Admin {
         this.phoneNumber = builder.phoneNumber;
         this.dateCreated = builder.dateCreated;
     }
+
+    public UUID getAdminId() { return adminId; }
+    public int getAdminNumber() {return adminNumber; }
 
     // Getters
     public UUID AdminId() { return adminId; }
@@ -82,19 +59,16 @@ public class Admin {
     @Override
     public String toString() {
         return "Admin{" +
-                "adminId=" + adminId +
-                ", adminNumber='" + adminNumber + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='***'" + // Masked password
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", dateCreated=" + dateCreated +
-                '}';
+        ", adminNumber='" + adminNumber + '\'' +
+        ", fullName='" + fullName + '\'' +
+        ", email='" + email + '\'' +
+        ", password='***'" + // Masked password
+        ", phoneNumber='" + phoneNumber + '\'' +
+        ", dateCreated=" + dateCreated +
+        '}';
     }
-
     // Builder
     public static class Builder {
-        private UUID adminId;
         private int adminNumber;
         private String fullName;
         private String email;
@@ -106,11 +80,7 @@ public class Admin {
             this.adminNumber = adminNumber;
             return this;
         }
-        public Builder setFullName(String fullName) {
-            this.fullName = fullName;
-            return this;
-        }
-        }
+
         public Builder setFullName(String fullName) {
             this.fullName = fullName;
             return this;
@@ -138,9 +108,7 @@ public class Admin {
             return this;
         }
 
-        public Builder copy(Admin admin) {
-            this.adminId = admin.adminId;
-            this.adminNumber = admin.adminNumber;
+        public Builder copy(za.co.revvedAuctions.domain.Admin admin) {
             this.fullName = admin.fullName;
             this.email = admin.email;
             this.password = admin.password;
@@ -148,7 +116,6 @@ public class Admin {
             this.dateCreated = admin.dateCreated;
             return this;
         }
-
-        public Admin build() { return new Admin(this); }
+        public za.co.revvedAuctions.domain.Admin build() { return new za.co.revvedAuctions.domain.Admin(this); }
     }
 }
