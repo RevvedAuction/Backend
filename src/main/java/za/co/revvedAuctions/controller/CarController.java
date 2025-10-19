@@ -53,7 +53,6 @@ public class CarController {
         return dto;
     }
 
-    // Add a new car with image
     @PostMapping("/add")
     public ResponseEntity<CarDTO> createCar(
             @RequestParam("carVIN") String carVIN,
@@ -86,7 +85,6 @@ public class CarController {
         return new ResponseEntity<>(mapToDTO(savedCar), HttpStatus.CREATED);
     }
 
-    // Get a single car by VIN
     @GetMapping("/{vin}")
     public ResponseEntity<CarDTO> getCarByVIN(@PathVariable("vin") String vin) {
         Car car = carService.getCarByVIN(vin);
@@ -97,29 +95,15 @@ public class CarController {
         }
     }
 
-    // Get all active auctions
-//    @GetMapping("/active")
-//    public ResponseEntity<List<CarDTO>> getActiveAuctions() {
-//        List<CarDTO> carDTOs = carService.getActiveAuctions()
-//                .stream()
-//                .map(this::mapToDTO)
-//                .collect(Collectors.toList());
-//        return ResponseEntity.ok(carDTOs);
-//    }
-
-    // Update car details
     @PutMapping("/{vin}")
     public ResponseEntity<CarDTO> updateCar(
             @PathVariable("vin") String vin,
             @RequestBody Car updatedCar) {
 
-        // Fetch existing car
         Car existingCar = carService.getCarByVIN(vin);
         if (existingCar == null) {
             return ResponseEntity.notFound().build();
         }
-
-        // Determine mediaBase64 to use
         byte[] mediaBytes;
 
         if (updatedCar.getMediaBase64() != null && updatedCar.getMediaBase64().startsWith("data:image")) {
@@ -135,8 +119,6 @@ public class CarController {
             mediaBytes = null; // no image
         }
 
-
-        // Build updated car
         Car carToUpdate = new Car.Builder()
                 .copy(existingCar)
                 .setCarMake(updatedCar.getCarMake())
@@ -148,12 +130,10 @@ public class CarController {
                 .setMediaBase64(mediaBytes) // store as bytes
                 .build();
 
-        // Save and return
         Car savedCar = carService.saveCar(carToUpdate);
         return ResponseEntity.ok(mapToDTO(savedCar));
     }
 
-    // Delete car
     @DeleteMapping("/delete/{vin}")
     public ResponseEntity<?> deleteCar(@PathVariable("vin") String vin) {
         Car car = carService.getCarByVIN(vin);
@@ -164,7 +144,6 @@ public class CarController {
         return ResponseEntity.noContent().build();
     }
 
-    // Get all cars
     @GetMapping
     public ResponseEntity<List<CarDTO>> getAllCars() {
         List<CarDTO> carDTOs = carService.getAllCars()

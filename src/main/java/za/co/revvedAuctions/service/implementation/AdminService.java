@@ -23,6 +23,10 @@ public class AdminService implements IAdminService {
         return repository.save(admin);
     }
 
+    public Admin findAdmin(int adminNumber) {
+        return repository.findAdminByAdminNumber(adminNumber);
+    }
+
     @Override
     public Admin read(UUID adminId) {
         return repository.findById(adminId).orElseThrow();
@@ -31,10 +35,6 @@ public class AdminService implements IAdminService {
     @Override
     public Admin update(Admin admin) {
         return repository.save(admin);
-    }
-
-    public Admin findAdmin(int adminNumber) {
-        return repository.findAdminByAdminNumber(adminNumber);
     }
 
     @Override
@@ -49,3 +49,4 @@ public class AdminService implements IAdminService {
         return this.repository.findAll();
     }
 }
+// 

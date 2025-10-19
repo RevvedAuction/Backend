@@ -45,12 +45,12 @@ public class UserService implements IUserService {
                     );
 
                     if (isPasswordCorrect) {
-                        return new LoginMessage("Login Success", true);
+                        return new LoginMessage("Login Success", 15L);
                     } else {
-                        return new LoginMessage("Password does not match", false);
+                        return new LoginMessage("Password does not match", 15L);
                     }
                 })
-                .orElseGet(() -> new LoginMessage("Email does not exist", false));
+                .orElseGet(() -> new LoginMessage("Email does not exist", 15L));
     }
 
 
@@ -70,12 +70,12 @@ public class UserService implements IUserService {
         return repository.save(user);
     }
 
-    @Override
-    public User delete(Long userId) {
-        User toDelete = read(userId);
-        repository.delete(toDelete);
-        return toDelete;
-    }
+//    @Override
+//    public User delete(Long userId) {
+//        User toDelete = read(userId);
+//        repository.delete(toDelete);
+//        return toDelete;
+//    }
 
     @Override
     public List<User> getAll() {

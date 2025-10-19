@@ -1,7 +1,7 @@
 package za.co.revvedAuctions.domain;
-/* AuctionHistory
- * AuctionHistory.java
- * AuctionHistory POJO class
+/*AuctionHistory
+ * AuctionHistrory.java
+ *  AuctionHistory POJO class
  * Author: Engetelo Mathebane (230227767)
  * Date: 2025-05-11
  */
@@ -17,18 +17,24 @@ public class AuctionHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int historyId;
+    protected int historyId;
 
-    private String auctionSessionId;
-    private String carVIN;
-    private String userId;
-    private String sellerId;
-    private String buyerId;
-    private double finalPrice;
-    private LocalDate auctionDate;
-    private String status;
+    protected String auctionSessionId;
 
-    // Default constructor for JPA
+    protected String carVIN;
+
+    protected String userId;
+
+    protected String sellerId;
+
+    protected String  buyerId;
+
+    protected double finalPrice;
+
+    protected LocalDate auctionDate;
+
+    protected String status;
+
     protected AuctionHistory() {
     }
 
@@ -94,17 +100,16 @@ public class AuctionHistory {
                 ", status='" + status + '\'' +
                 '}';
     }
-
     public static class Builder {
-        private int historyId;
-        private String auctionSessionId;
-        private String carVIN;
-        private String userId;
-        private String sellerId;
-        private String buyerId;
-        private double finalPrice;
-        private LocalDate auctionDate;
-        private String status;
+        protected int historyId;
+        protected String auctionSessionId;
+        protected String carVIN;
+        protected String userId;
+        protected String sellerId;
+        protected String buyerId;
+        protected double finalPrice;
+        protected LocalDate auctionDate;
+        protected String status;
 
         public Builder setHistoryId(int historyId) {
             this.historyId = historyId;
@@ -151,7 +156,7 @@ public class AuctionHistory {
             return this;
         }
 
-        public Builder copy(AuctionHistory auctionHistory) {
+       public Builder copy(AuctionHistory auctionHistory) {
             this.historyId = auctionHistory.getHistoryId();
             this.auctionSessionId = auctionHistory.getAuctionSessionId();
             this.carVIN = auctionHistory.getCarVIN();
@@ -167,5 +172,6 @@ public class AuctionHistory {
         public AuctionHistory build() {
             return new AuctionHistory(this);
         }
+
     }
 }
