@@ -1,63 +1,61 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+package za.co.revvedAuctions.controller;
 
-package com.example.demo.controller;
-
-import com.example.demo.dto.LoginUserDto;
-import com.example.demo.dto.RegisterUserDto;
-import com.example.demo.dto.VerifyUserDto;
-import com.example.demo.model.User;
-import com.example.demo.responses.LoginResponse;
-import com.example.demo.service.AuthenticationService;
-import com.example.demo.service.JwtService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping({"/auth"})
+import za.co.revvedAuctions.dto.LoginRequest;
+import za.co.revvedAuctions.dto.RegisterDTO;
+import za.co.revvedAuctions.dto.VerifyUserDTO;
+import za.co.revvedAuctions.domain.User;
+import za.co.revvedAuctions.payload.LoginMessage;
+import za.co.revvedAuctions.service.implementation.AuthService;
+import za.co.revvedAuctions.service.implementation.JWTService;
+
 @RestController
+@RequestMapping("/auth")
 public class AuthController {
-    private final JwtService jwtService;
-    private final AuthenticationService authenticationService;
 
-    public AuthController(JwtService jwtService, AuthenticationService authenticationService) {
+    private final JWTService jwtService;
+    private final AuthService authService;
+
+    public AuthController(JWTService jwtService, AuthService authService) {
         this.jwtService = jwtService;
-        this.authenticationService = authenticationService;
+        this.authService = authService;
     }
 
-    @PostMapping({"/signup"})
-    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
-        User registeredUser = this.authenticationService.signup(registerUserDto);
+    @PostMapping("/signup")
+    public ResponseEntity<User> register(@RequestBody RegisterDTO registerDTO) {
+        User registeredUser = authService.register(registerDTO);
         return ResponseEntity.ok(registeredUser);
     }
 
-    @PostMapping({"/login"})
-    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
-        User authenticatedUser = this.authenticationService.authenticate(loginUserDto);
-        String jwtToken = this.jwtService.generateToken(authenticatedUser);
-        LoginResponse loginResponse = new LoginResponse(jwtToken, this.jwtService.getExpirationTime());
-        return ResponseEntity.ok(loginResponse);
+    @PostMapping("/login")
+    public ResponseEntity<?> authenticate(@RequestBody LoginRequest loginRequest) {
+        try {
+            User authenticatedUser = authService.authenticate(loginRequest);
+            String jwtToken = jwtService.generateToken(authenticatedUser);
+            LoginMessage response = new LoginMessage(jwtToken, jwtService.getExpirationTime());
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(401).body(e.getMessage());
+        }
     }
 
-    @PostMapping({"/verify"})
-    public ResponseEntity<?> verifyUser(@RequestBody VerifyUserDto verifyUserDto) {
+
+    @PostMapping("/verify")
+    public ResponseEntity<?> verifyUser(@RequestBody VerifyUserDTO verifyUserDTO) {
         try {
-            this.authenticationService.verifyUser(verifyUserDto);
+            authService.verifyUser(verifyUserDTO);
             return ResponseEntity.ok("Account verified successfully");
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @PostMapping({"/resend"})
+    @PostMapping("/resend")
     public ResponseEntity<?> resendVerificationCode(@RequestParam String email) {
         try {
-            this.authenticationService.resendVerificationCode(email);
+            authService.resendVerificationCode(email);
             return ResponseEntity.ok("Verification code sent");
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

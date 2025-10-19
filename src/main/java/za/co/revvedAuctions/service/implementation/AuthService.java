@@ -10,7 +10,6 @@ import za.co.revvedAuctions.dto.LoginRequest;
 import za.co.revvedAuctions.dto.RegisterDTO;
 import za.co.revvedAuctions.dto.VerifyUserDTO;
 import za.co.revvedAuctions.repository.UserRepository;
-import za.co.revvedAuctions.service.EmailService;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -36,24 +35,27 @@ public class AuthService {
         this.emailService = emailService;
     }
 
-    public User signup(RegisterDTO input) {
+    public User register(RegisterDTO input) {
         if (userRepository.findByUserEmail(input.getEmail()).isPresent()) {
             throw new RuntimeException("Email is already registered");
         }
 
-        User user = new User();
-        user.setUserName(input.getUsername());
-        user.setUserEmail(input.getEmail());
-        user.setUserPassword(passwordEncoder.encode(input.getPassword()));
-        user.setVerificationCode(generateVerificationCode());
-        user.setVerificationCodeExpiresAt(LocalDateTime.now().plusMinutes(15));
-        user.setEnabled(false);
+        String verificationCode = generateVerificationCode();
+
+        User user = new User.Builder()
+                .setUserFullName(input.getUserFullName())
+                .setUserEmail(input.getEmail())
+                .setUserPassword(passwordEncoder.encode(input.getPassword()))
+                .setVerificationCode(verificationCode)
+                .setVerificationCodeExpiresAt(LocalDateTime.now().plusMinutes(15))
+                .setEnabled(false)
+                .build();
 
         userRepository.save(user);
         sendVerificationEmail(user);
+
         return user;
     }
-
 
     public User authenticate(LoginRequest input) {
         User user = userRepository.findByUserEmail(input.getUserEmail())
@@ -74,12 +76,8 @@ public class AuthService {
     }
 
     public void verifyUser(VerifyUserDTO input) {
-        Optional<User> optionalUser = userRepository.findByUserEmail(input.getEmail());
-        if (optionalUser.isEmpty()) {
-            throw new RuntimeException("User not found");
-        }
-
-        User user = optionalUser.get();
+        User user = userRepository.findByUserEmail(input.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (user.getVerificationCodeExpiresAt().isBefore(LocalDateTime.now())) {
             throw new RuntimeException("Verification code has expired");
@@ -114,7 +112,32 @@ public class AuthService {
         String subject = "Account Verification";
         String htmlMessage = """
                 <html>
-                  <body style="font-family: Arial, sans-serif;">
-                    <div style="background-color: #f5f5f5; padding: 20px;">
-                      <h2 style="color: #333;">Welcome to Revved Auctions!</h2>
-                      <p style="font-size: 16px;">Enter the verification code below to continue:</p>
+                    <body style="font-family: Arial, sans-serif;">
+                        <h2 style="color: #333;">Welcome to Revved Auctions!</h2>
+                        <p style="font-size: 16px;">Your verification code is:</p>
+                        <h3 style="background:#222;color:#fff;padding:10px;width:fit-content;">
+                            """ + user.getVerificationCode() + """
+                        </h3>
+                        <p>This code will expire in 15 minutes.</p>
+                    </body>
+                </html>
+                """;
+
+        try {
+            emailService.sendVerificationEmail(user.getUserEmail(), subject, htmlMessage);
+        } catch (MessagingException e) {
+            throw new RuntimeException("Failed to send verification email");
+        }
+    }
+
+    private String generateVerificationCode() {
+        int code = new Random().nextInt(900000) + 100000;
+        return String.valueOf(code);
+    }
+
+    public User loadUserByEmail(String email) {
+        return userRepository.findByUserEmail(email)
+                .orElse(null);
+    }
+
+}

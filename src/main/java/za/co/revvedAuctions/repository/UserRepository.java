@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 import za.co.revvedAuctions.domain.User;
 
-import java.lang.ScopedValue;
 import java.util.Optional;
 
 @EnableJpaRepositories

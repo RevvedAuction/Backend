@@ -1,4 +1,4 @@
-package za.co.revvedAuctions.config;;
+package za.co.revvedAuctions.config;
 
 
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,7 @@
 package za.co.revvedAuctions.domain;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 /*
 User.java
@@ -29,7 +30,15 @@ public class User {
     @Column(name = "password", nullable = false, length = 255)
     private String userPassword;
 
-    protected User() {}
+    @Column(name = "verification_code")
+    private String verificationCode;
+
+    @Column(name = "verification_expiration")
+    private LocalDateTime verificationCodeExpiresAt;
+
+    private boolean enabled;
+
+    public User() {}
 
     private User(Builder builder) {
         this.userID = builder.userID;
@@ -37,38 +46,26 @@ public class User {
         this.userFullName = builder.userFullName;
         this.userEmail = builder.userEmail;
         this.userPassword = builder.userPassword;
+        this.verificationCode = builder.verificationCode;
+        this.verificationCodeExpiresAt = builder.verificationCodeExpiresAt;
+        this.enabled = builder.enabled;
     }
 
-    public Long getUserID() {
-        return userID;
-    }
 
-    public String getUserType() {
-        return userType;
-    }
+    public Long getUserID() { return userID; }
+    public String getUserType() { return userType; }
+    public String getUserFullName() { return userFullName; }
+    public String getUserEmail() { return userEmail; }
+    public String getUserPassword() { return userPassword; }
+    public String getVerificationCode() { return verificationCode; }
+    public LocalDateTime getVerificationCodeExpiresAt() { return verificationCodeExpiresAt; }
+    public boolean isEnabled() { return enabled; }
 
-    public String getUserFullName() {
-        return userFullName;
-    }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
+    public void setVerificationCode(String verificationCode) { this.verificationCode = verificationCode; }
+    public void setVerificationCodeExpiresAt(LocalDateTime expiresAt) { this.verificationCodeExpiresAt = expiresAt; }
+    public void setEnabled(boolean enabled) { this.enabled = enabled; }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "userID='" + userID + '\'' +
-//                ", userType='" + userType + '\'' +
-//                ", userFullName='" + userFullName + '\'' +
-//                ", userEmail='" + userEmail + '\'' +
-//                ", userPassword='" + userPassword + '\'' +
-//                '}';
-//    }
 
     public static class Builder {
         private Long userID;
@@ -76,6 +73,9 @@ public class User {
         private String userFullName;
         private String userEmail;
         private String userPassword;
+        private String verificationCode;
+        private LocalDateTime verificationCodeExpiresAt;
+        private boolean enabled;
 
         public Builder setUserID(Long userID) {
             this.userID = userID;
@@ -102,12 +102,30 @@ public class User {
             return this;
         }
 
+        public Builder setVerificationCode(String code) {
+            this.verificationCode = code;
+            return this;
+        }
+
+        public Builder setVerificationCodeExpiresAt(LocalDateTime expiresAt) {
+            this.verificationCodeExpiresAt = expiresAt;
+            return this;
+        }
+
+        public Builder setEnabled(boolean enabled) {
+            this.enabled = enabled;
+            return this;
+        }
+
         public Builder copy(User user) {
             this.userID = user.getUserID();
             this.userType = user.getUserType();
             this.userFullName = user.getUserFullName();
             this.userEmail = user.getUserEmail();
             this.userPassword = user.getUserPassword();
+            this.verificationCode = user.getVerificationCode();
+            this.verificationCodeExpiresAt = user.getVerificationCodeExpiresAt();
+            this.enabled = user.isEnabled();
             return this;
         }
 
