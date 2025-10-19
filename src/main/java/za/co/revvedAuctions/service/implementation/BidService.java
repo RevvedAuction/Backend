@@ -34,6 +34,12 @@ public class BidService implements IBidService {
     }
 
     @Override
+    public Bid delete(Integer id) {
+        repository.deleteById(id);
+        return null;
+    }
+
+    @Override
     public List<Bid> getAll() {
         return repository.findAll();
     }

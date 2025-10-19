@@ -34,6 +34,12 @@ public class AuctionSessionService implements IAuctionSessionService {
     }
 
     @Override
+    public AuctionSession delete(String string) {
+        repository.deleteById(string);
+        return null;
+    }
+
+    @Override
     public List<AuctionSession> getAll() {
         return this.repository.findAll();
     }

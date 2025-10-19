@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.*;
 import za.co.revvedAuctions.domain.Bid;
 import za.co.revvedAuctions.service.implementation.BidService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/bids")
+@CrossOrigin(origins = "http://localhost:8081") // Add this for CORS
 public class BidController {
 
     private final BidService bidService;
@@ -21,7 +23,17 @@ public class BidController {
 
     @PostMapping("/create")
     public ResponseEntity<Bid> create(@RequestBody Bid bid) {
-        return ResponseEntity.ok(bidService.create(bid));
+        // Auto-fill missing details
+        Bid newBid = new Bid.Builder()
+                .setCarVIN(bid.getCarVIN())
+                .setUserId(bid.getUserId())
+                .setBidAmount(bid.getBidAmount())
+                .setBidDate(LocalDate.now())
+                .setStatus("Pending Confirmation")
+                .setTotalBids(bid.getTotalBids() + 1)
+                .build();
+
+        return ResponseEntity.ok(bidService.create(newBid));
     }
 
     @GetMapping("/read/{id}")

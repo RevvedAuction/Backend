@@ -33,6 +33,12 @@ public class BuyerService implements IBuyerService {
         return this.repository.save(buyer);
     }
 
+    @Override
+    public Buyer delete(String string) {
+        this.repository.deleteById(string);
+        return null;
+    }
+
 
     @Override
     public List<Buyer> getAll() {

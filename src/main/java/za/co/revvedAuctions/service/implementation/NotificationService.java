@@ -34,6 +34,12 @@ public class NotificationService implements INotificationService {
     }
 
     @Override
+    public Notification delete(Integer integer) {
+        notificationRepository.deleteById(integer);
+        return null;
+    }
+
+    @Override
     public List<Notification> getAll() {
         return this.notificationRepository.findAll();
     }

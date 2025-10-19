@@ -32,6 +32,12 @@ public class SellerService implements ISellerService {
     }
 
     @Override
+    public Seller delete(String string) {
+        this.repository.deleteById(string);
+        return null;
+    }
+
+    @Override
     public List<Seller> getAll() {
         return this.repository.findAll();
     }
